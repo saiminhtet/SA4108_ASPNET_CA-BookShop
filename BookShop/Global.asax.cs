@@ -23,7 +23,7 @@ namespace Book_Shop
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session["UserID"] = 0;
+            Session["UserID"] = 1;
             Session["ISBN"] = "";
             Session["Title"] = "Black Edge"; //Black Edge
             Session["Category"] = "2";

@@ -71,7 +71,7 @@ namespace Book_Shop
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
             Session["cart"] = myCart;
-            Response.Redirect("~/Checkout");
+            Response.Redirect("~/CheckOut");
         }
     }
 }

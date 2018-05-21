@@ -14,6 +14,9 @@ namespace Book_Shop.Models
 
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<CreditCard> CreditCards { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -32,6 +35,46 @@ namespace Book_Shop.Models
 
             modelBuilder.Entity<Category>()
                 .Property(e => e.Name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CreditCard>()
+                .Property(e => e.CardNumber)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Transaction>()
+                .Property(e => e.UserName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Transaction>()
+                .Property(e => e.FirstName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Transaction>()
+                .Property(e => e.LastName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Transaction>()
+                .Property(e => e.ShippingAddress)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Transaction>()
+                .Property(e => e.City)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Transaction>()
+                .Property(e => e.State)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Transaction>()
+                .Property(e => e.PostalCode)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Transaction>()
+                .Property(e => e.Country)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Transaction>()
+                .Property(e => e.Phone)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()

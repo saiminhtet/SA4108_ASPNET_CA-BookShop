@@ -12,13 +12,16 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <script src="Scripts/jquery-3.0.0.min.js"></script>
     <script src="Scripts/moment.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap-datetimepicker.css" rel="stylesheet" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-     <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+
 </head>
 <body>
     <form runat="server">

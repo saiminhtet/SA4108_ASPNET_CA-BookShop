@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BookShop</RootNamespace>
-    <AssemblyName>BookShop</AssemblyName>
+    <RootNamespace>Book_Shop</RootNamespace>
+    <AssemblyName>Book_Shop</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
@@ -129,6 +129,8 @@
   <ItemGroup>
     <Content Include="ChangePassword.aspx" />
     <Content Include="CheckOut.aspx" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -301,7 +303,11 @@
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CheckOutProcess.cs" />
+    <Compile Include="Models\CreditCard.cs" />
     <Compile Include="Models\Result.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\TransactionDetail.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="MyCart.aspx.cs">
       <DependentUpon>MyCart.aspx</DependentUpon>
