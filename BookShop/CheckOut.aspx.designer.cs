@@ -11,7 +11,7 @@ namespace BookShop
 {
 
 
-    public partial class About
+    public partial class CheckOut
     {
     }
 }

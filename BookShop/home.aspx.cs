@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Security.Principal;
-using BookShop.Models;
-namespace BookShop
+using Book_Shop.Models;
+namespace Book_Shop
 {
     public partial class home : System.Web.UI.Page
     {
@@ -32,7 +32,7 @@ namespace BookShop
         protected void imgPowerSearch_Click(object sender, ImageClickEventArgs e)
         {
             searchText = tbxSearch.Text;
-            Response.Redirect("~/results?search=" + searchText);
+            Response.Redirect("~/SearchResult?search=" + searchText);
         }
 
         protected void btnSignUp_Click(object sender, EventArgs e)

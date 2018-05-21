@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BookShop {
+namespace Book_Shop {
     
     
     public partial class Site_Mobile {

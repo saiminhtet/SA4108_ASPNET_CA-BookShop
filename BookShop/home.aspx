@@ -2,7 +2,7 @@
     Language="C#" 
     AutoEventWireup="true" 
     CodeBehind="home.aspx.cs" 
-    Inherits="BookShop.home" %>
+    Inherits="Book_Shop.home" %>
 
 <!DOCTYPE html>
 
@@ -118,7 +118,8 @@
         <table class="navbar-container">
             <tr>
                 <td class="td1"><asp:ImageButton ID="imgMainBrand" runat="server" ImageUrl="~/resources/brand/ext.png"/></td>
-                <td class="td2"><asp:TextBox ID="tbxSearch" runat="server" Text="Enter title, author or category to search." onClick="tbxClear(this.id);" onBlur="tbxSearchText(this.id);"></asp:TextBox></td>
+                <%--<td class="td2"><asp:TextBox ID="tbxSearch" runat="server" Text="Enter title, author or category to search." onClick="tbxClear(this.id);" onBlur="tbxSearchText(this.id);"></asp:TextBox></td>--%>
+                <td class="td2"><asp:TextBox ID="tbxSearch" placeholder="Enter title, author or category to search."  runat="server" Text=""></asp:TextBox></td>
                 <td><asp:ImageButton runat="server" ID="imgPowerSearch" ImageUrl="~/resources/symbol/magnifying_glass_blue.png" OnClick="imgPowerSearch_Click"/></td>
                 <td><asp:ImageButton runat="server" ID="imgCart" ImageUrl="~/resources/symbol/shopping-cart-blue.png" OnClick="imgCart_Click"/></td>
                 <td class="td3">

@@ -7,21 +7,23 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace BookShop
+namespace Book_Shop
 {
     public class Global : System.Web.HttpApplication
     {
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+           
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            
+            Session["UserID"] = 0;
             Session["ISBN"] = "";
             Session["Title"] = "Black Edge"; //Black Edge
             Session["Category"] = "2";

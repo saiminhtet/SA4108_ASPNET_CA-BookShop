@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BookShop.Models;
+using Book_Shop.Models;
 
-namespace BookShop
+namespace Book_Shop
 {
     public class Cart
     {

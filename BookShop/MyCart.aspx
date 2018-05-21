@@ -1,5 +1,5 @@
 ﻿<%--<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyCart.aspx.cs" Inherits="BookShop.MyCart" %>--%>
-<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyCart.aspx.cs" Inherits="BookShop.MyCart" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyCart.aspx.cs" Inherits="Book_Shop.MyCart" %>
 
 <%--<!DOCTYPE html>
 

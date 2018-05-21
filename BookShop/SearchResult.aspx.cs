@@ -2,42 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BookShop.Models;
-namespace BookShop
+using Book_Shop.Models;
+namespace Book_Shop
 {
     public partial class SearchResult : System.Web.UI.Page
     {
-        string author;
-        string title;
-        string category;
-        static Cart myCart;
+       
+       
+        static Cart myCart = new Cart();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                author = Session["Author"].ToString();
-                title = Session["Title"].ToString();
-                category = Session["Category"].ToString();
-                myCart = new Cart();
+                
+              //  myCart = new Cart();
             }
-           
+
         }
 
-        public IQueryable<BookList> GetBooksList()
+        public IQueryable<BookList> GetBooksList([QueryString("search")] string searchquery)
         {
-
-            int categoryId = 0;
-            if (category != "" || author != "" || title != "")
+            if (searchquery != "" && searchquery != null)
             {
-                categoryId = Convert.ToInt16(category);
-                var resultbooks = Result.GetBooklists(author, title, categoryId);
+
+                var resultbooks = Result.GetBooklists(searchquery);
                 return resultbooks;
             }
 
             var books = Result.GetBooklistAll();
-
             return books;
 
         }
@@ -56,7 +51,7 @@ namespace BookShop
                     double price = Double.Parse(book.Price.ToString());
                     CartItem c = new CartItem(bookId, title, 1, price);
                     myCart.AddToCart(c);
-                    
+
                 }
             }
         }

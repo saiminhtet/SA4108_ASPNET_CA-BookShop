@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SearchResult.aspx.cs" Inherits="BookShop.SearchResult" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SearchResult.aspx.cs" Inherits="Book_Shop.SearchResult" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
@@ -11,7 +11,7 @@
                 <ContentTemplate>
                     <asp:ListView ID="lvbooklist" runat="server"
                         DataKeyNames="BookID" GroupItemCount="4"
-                        ItemType="BookShop.Models.BookList" SelectMethod="GetBooksList" OnItemCommand="lvbooklist_ItemCommand">
+                        ItemType="Book_Shop.Models.BookList" SelectMethod="GetBooksList" OnItemCommand="lvbooklist_ItemCommand">
                         <EmptyDataTemplate>
                             <table>
                                 <tr>
@@ -85,7 +85,7 @@
                                     <tr></tr>
                                 </tbody>
                             </table>
-                            <asp:DataPager runat="server" ID="lvbookpager" PagedControlID="lvbooklist" class="btn-group btn-group-sm" PageSize="10">
+                            <asp:DataPager runat="server" ID="lvbookpager" PagedControlID="lvbooklist" class="btn-group btn-group-sm" PageSize="12">
                                 <Fields>
                                     <asp:NextPreviousPagerField PreviousPageText="<" ShowPreviousPageButton="true"
                                         ShowFirstPageButton="true" ShowNextPageButton="false" FirstPageText="|<" ShowLastPageButton="false"

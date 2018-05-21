@@ -1,4 +1,4 @@
-namespace BookShop.Models
+namespace Book_Shop.Models
 {
     using System;
     using System.Collections.Generic;

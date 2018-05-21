@@ -10,33 +10,33 @@
 namespace Book_Shop {
     
     
-    public partial class SearchResult {
+    public partial class Login1 {
         
         /// <summary>
-        /// Button1 control.
+        /// lgn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Login lgn;
         
         /// <summary>
-        /// UpdatePanel4 control.
+        /// btn_RecoverPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel4;
+        protected global::System.Web.UI.WebControls.Button btn_RecoverPassword;
         
         /// <summary>
-        /// lvbooklist control.
+        /// btn_Signup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView lvbooklist;
+        protected global::System.Web.UI.WebControls.Button btn_Signup;
     }
 }
