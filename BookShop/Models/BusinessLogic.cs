@@ -78,6 +78,7 @@ namespace Book_Shop
                 promotion.EndDate = enddate;
                 promotion.DiscountAmt = discountamt;
             }
+        
         }
     }
 }

@@ -9,22 +9,15 @@ namespace Book_Shop
 {
     public partial class Dashboard : System.Web.UI.Page
     {
+        public object Table1 { get; private set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                ListBox1.DataSource = BusinessLogic.ByCategory();
-                ListBox1.DataTextField = "Name";
-                ListBox1.DataValueField = "CategoryID";
-                ListBox1.DataBind();
-                ListBox1.DataSource = BusinessLogic.AllBooks();
-                ListBox1.DataTextField = "Title";
-                ListBox1.DataValueField = "BookID";
-                ListBox1.DataBind();
-                ListBox1.DataSource = BusinessLogic.AllBooks();
-                ListBox1.DataTextField = "Author";
-                ListBox1.DataValueField = "BookID";
-                ListBox1.DataBind();
+                UpdatePanel1.Visible = false;
+                UpdatePanel2.Visible = false;
+                GridView1.Visible = false;
                 bindgrid();
             }
         }
@@ -95,12 +88,81 @@ namespace Book_Shop
             {
                 Response.Write(exp.ToString());
             }
-            bindgrid();
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string temp = RadioButtonList1.SelectedValue;
+            if (temp == "Title")
+            {
+                ListBox1.Visible = true;
+                ListBox1.DataSource = BusinessLogic.AllBooks();
+                ListBox1.DataTextField = "Title";
+                ListBox1.DataValueField = "BookID";
+                ListBox1.DataBind();
+            }
+            if (temp == "Author")
+            {
+                ListBox1.Visible = true;
+                ListBox1.DataSource = BusinessLogic.AllBooks();
+                ListBox1.DataTextField = "Author";
+                ListBox1.DataValueField = "BookID";
+                ListBox1.DataBind();
+            }
+            if (temp == "Category")
+            {
+                ListBox1.Visible = true;
+                ListBox1.DataSource = BusinessLogic.ByCategory();
+                ListBox1.DataTextField = "Name";
+                ListBox1.DataValueField = "CategoryID";
+                ListBox1.DataBind();
+            }
+            if (temp=="Storewide")
+            {
+                ListBox1.Visible = false;
+            }
+            TextBox17.Visible = true;
+            TextBox18.Visible = true;
+            TextBox20.Visible = true;
+        }
 
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            List<PromoInfo> pList = new List<PromoInfo>();
+            foreach (var i in ListBox1.GetSelectedIndices())
+            {
+                string Scope = RadioButtonList1.SelectedValue;
+                string PromotionalItem = ListBox1.Items[i].ToString();
+                if (Scope == "Storewide") PromotionalItem = "N/A";
+                string StartDate = TextBox17.Text;
+                string EndDate = TextBox18.Text;
+                string Discount = TextBox20.Text;
+                PromoInfo p = new PromoInfo(Scope, PromotionalItem, StartDate, EndDate, Discount);
+                pList.Add(p);
+            }
+            GridView2.DataSource = pList;
+            GridView2.DataBind();
+        }
+
+        protected void Add_Btn_Click(object sender, EventArgs e)
+        {
+            GridView1.Visible = false;
+            UpdatePanel1.Visible = true;
+            UpdatePanel2.Visible = false;
+        }
+
+        protected void MngBook_Btn_Click(object sender, EventArgs e)
+        {
+            GridView1.Visible = true;
+            UpdatePanel1.Visible = false;
+            UpdatePanel2.Visible = false;
+        }
+
+        protected void MngPromo_Btn_Click(object sender, EventArgs e)
+        {
+            GridView1.Visible = false;
+            UpdatePanel2.Visible = true;
+            UpdatePanel1.Visible = false;
         }
     }
 }
