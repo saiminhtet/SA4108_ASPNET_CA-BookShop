@@ -11,10 +11,20 @@
 </html>--%>
         <div>
             <br />
-            <asp:Label ID="lbl_Email" runat="server" Text="Email Address"></asp:Label>&nbsp<asp:TextBox ID="tbx_Email" runat="server"></asp:TextBox><br />
-            <asp:Button ID="btn_Submit" runat="server" Text="Submit" OnClick="btn_Submit_Click" />&nbsp
-            <asp:Button ID="btn_GoToLogin" runat="server" Text="Login" OnClick="btn_GoToLogin_Click" />
-            <br /><asp:Label ID="lbl_Status" runat="server"></asp:Label>
+            <br />
+            <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="X-Large" Text="Recover Password" Style="margin-left: 500px"></asp:Label>
+            <br />
+            <br />
+            <asp:Label ID="lbl_Email" runat="server" Text="Email Address" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 450px"></asp:Label>&nbsp<asp:TextBox ID="tbx_Email" runat="server"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Please enter a valid email address" ControlToValidate="tbx_Email"
+                ValidationExpression="^\S+@\S+$" ForeColor="Red"></asp:RegularExpressionValidator>
+            <br />
+            <br />
+            <asp:Button ID="btn_Submit" runat="server" Text="Submit" OnClick="btn_Submit_Click" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 450px"/>&nbsp
+            <asp:Button ID="btn_GoToLogin" runat="server" Text="Login" OnClick="btn_GoToLogin_Click" Font-Names="Arial" Font-Size="Medium" CausesValidation="False" />
+            <br />
+            <br /><asp:Label ID="lbl_Status" runat="server" Style="margin-left: 450px"></asp:Label>
+            <br />
         </div>
 <%-- </form>
 </body>
