@@ -14,24 +14,16 @@ namespace Book_Shop
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
-
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
             // Session Variables Initialization
             Session["eadd"] = "";
-            Session["bkTitle"] = "";
-            Session["bkCat"] = "";
-            Session["bkAuthor"] = "";
-            Session["bkISBN"] = "";
             Session["cart"] = new Cart();
-
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

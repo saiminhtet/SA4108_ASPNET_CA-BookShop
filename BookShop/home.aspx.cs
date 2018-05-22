@@ -14,6 +14,7 @@ namespace Book_Shop
         string selectedISBN;
         string searchText;
         static Cart myCart;
+        const string bkCoverDir = "~/images/";
 
         Bookshop ctx = new Bookshop();
         List<Book> bkColl;
@@ -155,7 +156,7 @@ namespace Book_Shop
         public void DisplayFeaturedColl()
         {
             int i = 0;
-            f1Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f1Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f1Title.Text = bkColl[i].Title;
             f1Author.Text = bkColl[i].Author;
             f1Cat.Text = GetCatStr(bkColl[i].CategoryID);
@@ -163,7 +164,7 @@ namespace Book_Shop
             f1ISBN.Text = bkColl[i].ISBN;
             i += 1;
 
-            f2Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f2Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f2Title.Text = bkColl[i].Title;
             f2Author.Text = bkColl[i].Author;
             f2Cat.Text = GetCatStr(bkColl[i].CategoryID);
@@ -171,7 +172,7 @@ namespace Book_Shop
             f2ISBN.Text = bkColl[i].ISBN;
             i += 1;
 
-            f3Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f3Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f3Title.Text = bkColl[i].Title;
             f3Author.Text = bkColl[i].Author;
             f3Cat.Text = GetCatStr(bkColl[i].CategoryID);
@@ -179,7 +180,7 @@ namespace Book_Shop
             f3ISBN.Text = bkColl[i].ISBN;
             i += 1;
 
-            f4Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f4Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f4Title.Text = bkColl[i].Title;
             f4Author.Text = bkColl[i].Author;
             f4Cat.Text = GetCatStr(bkColl[i].CategoryID);
@@ -187,7 +188,7 @@ namespace Book_Shop
             f4ISBN.Text = bkColl[i].ISBN;
             i += 1;
 
-            f5Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f5Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f5Title.Text = bkColl[i].Title;
             f5Author.Text = bkColl[i].Author;
             f5Cat.Text = GetCatStr(bkColl[i].CategoryID);
@@ -195,7 +196,7 @@ namespace Book_Shop
             f5ISBN.Text = bkColl[i].ISBN;
             i += 1;
 
-            f6Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f6Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f6Title.Text = bkColl[i].Title;
             f6Author.Text = bkColl[i].Author;
             f6Cat.Text = GetCatStr(bkColl[i].CategoryID);
