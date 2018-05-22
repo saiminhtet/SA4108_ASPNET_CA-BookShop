@@ -71,7 +71,6 @@ namespace Book_Shop
             decimal price = Convert.ToDecimal(TextBox21.Text);
             if (FileUpload1.HasFile)
             {
-                FileUpload1.SaveAs(Server.MapPath("images") + "" + FileUpload1.FileName);
                 Label12.Text = "Image Uploaded";
                 Label12.ForeColor = System.Drawing.Color.ForestGreen;
             }
@@ -88,6 +87,11 @@ namespace Book_Shop
             {
                 Response.Write(exp.ToString());
             }
+            List<Book> q = new List<Book>();
+            q.Add(BusinessLogic.AllBooks().Last());
+            GridView3.DataSource = q;
+            GridView3.DataBind();
+            bindgrid();
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
