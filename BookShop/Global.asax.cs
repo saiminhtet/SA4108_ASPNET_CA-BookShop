@@ -24,6 +24,7 @@ namespace Book_Shop
             // Session Variables Initialization
             Session["eadd"] = "htetsaimin@gmial.com";
             Session["cart"] = new Cart();
+
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
