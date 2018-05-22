@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Book_Shop.Models;
+
 namespace Book_Shop
 {
     public partial class Signup : System.Web.UI.Page
@@ -17,7 +18,7 @@ namespace Book_Shop
         protected void Button1_Click(object sender, EventArgs e)
         {
             Bookshop ctx = new Bookshop();
-            if (tbx_Username.Text != "" && tbx_Email.Text != "" && tbx_Password.Text != "" && tbx_Password.Text == tbx_PasswordConfirmation.Text)
+            if (tbx_Email.Text != "")
             {
                 bool isFound = false;
                 int count = ctx.Users.Count();
@@ -34,7 +35,6 @@ namespace Book_Shop
                 {
                     lbl_Status.Text = "Duplicate email address, please enter another one";
                     tbx_Email.Text = "";
-                    tbx_Username.Text = "";
                     isFound = false;
                 }
                 else
@@ -48,9 +48,17 @@ namespace Book_Shop
                     u.EmailAddress = tbx_Email.Text;
                     u.Passcode = tbx_Password.Text;
                     u.DateJoined = DateTime.Today;
+                    u.Title = "";
+                    u.LastName = "";
+                    u.FirstName = "";
+                    u.ShippingAddress = "";
                     ctx.Users.Add(u);
                     ctx.SaveChanges();
                 }
+            }
+            else
+            {
+                lbl_Status.Text = "Please fill email address";
             }
         }
 

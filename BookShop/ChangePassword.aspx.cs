@@ -14,7 +14,7 @@ namespace Book_Shop
         {
             // this page comes from User Profile page
 
-            Session["eadd"] = "234567@a.com";
+            // Session["eadd"] = "234567@a.com";
 
             Bookshop ctx = new Bookshop();
             string emailAddress = (string)Session["eadd"];
