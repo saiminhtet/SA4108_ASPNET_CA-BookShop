@@ -34,18 +34,12 @@ namespace Book_Shop
 
         protected void btnLogIn_Click(object sender, EventArgs e)
         {
-            // Response.Redirect("~/LogIn");
-            // IIdentity id = User.Identity;
-            userName = "Alice Kiong"; //id.Name;
-            btnUser.Text = userName;
-            btnUser.Visible = true;
-            btnSignUp.Visible = false;
-            btnLogIn.Visible = false;
+            Response.Redirect("~/LogIn");
         }
 
         protected void btnUser_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Profile");
+            if ((string)Session["eadd"]!="") Response.Redirect("~/Profile");
         }
 
         protected void imgCart_Click(object sender, ImageClickEventArgs e)
