@@ -12,8 +12,6 @@ namespace Book_Shop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Session["eadd"] = "234567@a.com";
-
             Bookshop ctx = new Bookshop();
             string emailAddress = (string)Session["eadd"];
             if (emailAddress == "")
