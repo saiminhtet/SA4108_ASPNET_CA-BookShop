@@ -32,6 +32,11 @@ namespace Book_Shop
 
         }
 
+        protected void NotifyUser(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "toastr_message", "toastr.success(" + msg + ", " + type + " )", true);
+        }
+
         protected void lvbooklist_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             if (e.CommandName == "AddToCart")
@@ -45,16 +50,18 @@ namespace Book_Shop
                     string title = book.Title;
                     double price = Double.Parse(book.Price.ToString());
                     CartItem c = new CartItem(bookId, title, 1, price);
-                    myCart.AddToCart(c);
+                    string temp =myCart.AddToCart(c);                  
+                
+                    if (temp == Cart.AddToCartOK)
+                        NotifyUser("Added item to cart successfully", "Success");
+                    else if (temp == Cart.AddToCartNG)
+                        NotifyUser("Unable to add item to cart", "Error");
+                    Session["cart"] = myCart;
 
                 }
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Session["cart"] = myCart;
-            Response.Redirect("~/MyCart.aspx");
-        }
+       
     }
 }

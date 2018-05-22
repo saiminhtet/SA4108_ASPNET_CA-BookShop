@@ -25,22 +25,6 @@
             <br />
             <br />
             <br />
-            <br />
-            Card Details<br />
-            <br />
-            Full Name:
-            <asp:TextBox ID="tbx_FullName" runat="server" ReadOnly="True"></asp:TextBox>
-            <br />
-            <br />
-            Card Number:<asp:TextBox ID="tbx_CardNumber" runat="server" ReadOnly="True"></asp:TextBox>
-            <br />
-            <br />
-            Expiry Month:<asp:TextBox ID="tbx_ExpiryMonth" runat="server" ReadOnly="True"></asp:TextBox>
-            <br />
-            <br />
-            Expiry Year:<asp:TextBox ID="tbx_ExpiryYear" runat="server" ReadOnly="True"></asp:TextBox>
-            <br />
-            <br />
             <asp:Button ID="btn_Update" runat="server" OnClick="btn_Update_Click" Text="Update" />
             &nbsp;<asp:Button ID="btn_ChangePassword" runat="server" OnClick="btn_ChangePassword_Click" Text="Change Password" />
             <br />

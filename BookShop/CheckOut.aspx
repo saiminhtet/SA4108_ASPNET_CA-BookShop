@@ -10,7 +10,7 @@
                 <thead>
                     <th class="danger">Book ID</th>
                     <th class="danger">Book Title</th>
-                    <th class="danger">Qyantity</th>
+                    <th class="danger">Quantity</th>
                     <th class="danger">Unit Price</th>
 
                     <tr>
