@@ -6,14 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Security.Principal;
 using Book_Shop.Models;
+
 namespace Book_Shop
 {
     public partial class home : System.Web.UI.Page
     {
-        string userName;
         string selectedISBN;
-        string searchText;
         static Cart myCart;
+        const string bkCoverDir = "~/images/";
 
         Bookshop ctx = new Bookshop();
         List<Book> bkColl;
@@ -22,48 +22,36 @@ namespace Book_Shop
         {
             if (!IsPostBack)
             {
-                btnUser.Visible = false;
                 bkColl = GetFeaturedColl();
                 DisplayFeaturedColl();
-                myCart = new Cart();
+                myCart = (Cart)Session["cart"];
             }
         }
 
-        protected void imgPowerSearch_Click(object sender, ImageClickEventArgs e)
+        protected void NotifyUser(string msg, string type)
         {
-            searchText = tbxSearch.Text;
-            Response.Redirect("~/SearchResult?search=" + searchText);
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.success('" + msg + "', '" + type + "')", true);
         }
-
-        protected void btnSignUp_Click(object sender, EventArgs e)
+        protected void AddItem(int bkID, string title, double price)
         {
-            Response.Redirect("~/SignUp");
+            CartItem c = new CartItem(bkID, title, 1, price);
+            string temp = myCart.AddToCart(c);
+            if (temp == Cart.AddToCartOK)
+                NotifyUser("Added item to cart successfully", "Success");
+            else if (temp == Cart.AddToCartNG)
+                NotifyUser("Unable to add item to cart", "Error");
+            Session["cart"] = myCart;
         }
-
-        protected void btnLogIn_Click(object sender, EventArgs e)
-        {
-            // Response.Redirect("~/LogIn");
-            // IIdentity id = User.Identity;
-            userName = "Alice Kiong"; //id.Name;
-            btnUser.Text = userName;
-            btnUser.Visible = true;
-            btnSignUp.Visible = false;
-            btnLogIn.Visible = false;
-        }
-
-        protected void btnUser_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Profile");
-        }
-
         protected void f1BtnBuy_Click(object sender, EventArgs e)
         {
             string strPrice = f1Price.Text;
             int bkID = GetBkID(f1ISBN.Text);
             string title = f1Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
+            AddItem(bkID, title, price);
         }
 
         protected void f2BtnBuy_Click(object sender, EventArgs e)
@@ -72,8 +60,7 @@ namespace Book_Shop
             int bkID = GetBkID(f2ISBN.Text);
             string title = f2Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
+            AddItem(bkID, title, price);
         }
 
         protected void f3BtnBuy_Click(object sender, EventArgs e)
@@ -82,8 +69,7 @@ namespace Book_Shop
             int bkID = GetBkID(f3ISBN.Text);
             string title = f3Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
+            AddItem(bkID, title, price);
         }
 
         protected void f4BtnBuy_Click(object sender, EventArgs e)
@@ -92,8 +78,7 @@ namespace Book_Shop
             int bkID = GetBkID(f4ISBN.Text);
             string title = f4Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
+            AddItem(bkID, title, price);
         }
 
         protected void f5BtnBuy_Click(object sender, EventArgs e)
@@ -102,8 +87,7 @@ namespace Book_Shop
             int bkID = GetBkID(f5ISBN.Text);
             string title = f5Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
+            AddItem(bkID, title, price);
         }
 
         protected void f6BtnBuy_Click(object sender, EventArgs e)
@@ -112,8 +96,7 @@ namespace Book_Shop
             int bkID = GetBkID(f6ISBN.Text);
             string title = f6Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
+            AddItem(bkID, title, price);
         }
 
         public List<Book> GetFeaturedColl()
@@ -121,6 +104,7 @@ namespace Book_Shop
             List<Book> bkColl = new List<Book>();
             Random r = new Random();
             int ind = (int)(r.NextDouble() * (ctx.Books.ToList().Count));
+            if (ind == 0) ind += 1;
             bkColl.Add(ctx.Books.ToList().Find(x => x.BookID == ind));
 
             bool repeatBool = false;
@@ -155,7 +139,7 @@ namespace Book_Shop
         public void DisplayFeaturedColl()
         {
             int i = 0;
-            f1Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f1Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f1Title.Text = bkColl[i].Title;
             f1Author.Text = bkColl[i].Author;
             f1Cat.Text = GetCatStr(bkColl[i].CategoryID);
@@ -163,7 +147,7 @@ namespace Book_Shop
             f1ISBN.Text = bkColl[i].ISBN;
             i += 1;
 
-            f2Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f2Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f2Title.Text = bkColl[i].Title;
             f2Author.Text = bkColl[i].Author;
             f2Cat.Text = GetCatStr(bkColl[i].CategoryID);
@@ -171,7 +155,7 @@ namespace Book_Shop
             f2ISBN.Text = bkColl[i].ISBN;
             i += 1;
 
-            f3Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f3Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f3Title.Text = bkColl[i].Title;
             f3Author.Text = bkColl[i].Author;
             f3Cat.Text = GetCatStr(bkColl[i].CategoryID);
@@ -179,7 +163,7 @@ namespace Book_Shop
             f3ISBN.Text = bkColl[i].ISBN;
             i += 1;
 
-            f4Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f4Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f4Title.Text = bkColl[i].Title;
             f4Author.Text = bkColl[i].Author;
             f4Cat.Text = GetCatStr(bkColl[i].CategoryID);
@@ -187,7 +171,7 @@ namespace Book_Shop
             f4ISBN.Text = bkColl[i].ISBN;
             i += 1;
 
-            f5Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f5Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f5Title.Text = bkColl[i].Title;
             f5Author.Text = bkColl[i].Author;
             f5Cat.Text = GetCatStr(bkColl[i].CategoryID);
@@ -195,7 +179,7 @@ namespace Book_Shop
             f5ISBN.Text = bkColl[i].ISBN;
             i += 1;
 
-            f6Img.ImageUrl = "~/resources/book-cover/" + bkColl[i].ISBN + ".jpg";
+            f6Img.ImageUrl = bkCoverDir + bkColl[i].ISBN + ".jpg";
             f6Title.Text = bkColl[i].Title;
             f6Author.Text = bkColl[i].Author;
             f6Cat.Text = GetCatStr(bkColl[i].CategoryID);
@@ -207,43 +191,37 @@ namespace Book_Shop
         protected void f1Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f1ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
 
         protected void f2Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f2ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
 
         protected void f3Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f3ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
 
         protected void f4Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f4ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
 
         protected void f5Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f5ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
 
         protected void f6Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f6ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
-        }
-
-        protected void imgCart_Click(object sender, ImageClickEventArgs e)
-        {
-            Session["cart"] = myCart;
-            Response.Redirect("~/MyCart.aspx");
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
     }
 }

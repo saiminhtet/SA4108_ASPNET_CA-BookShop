@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Book_Shop.Models;
+
 namespace Book_Shop
 {
     public partial class Signup : System.Web.UI.Page
@@ -14,10 +15,10 @@ namespace Book_Shop
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btn_Create_Click(object sender, EventArgs e)
         {
-            Bookshop ctx = new Bookshop();
-            if (tbx_Username.Text != "" && tbx_Email.Text != "" && tbx_Password.Text != "" && tbx_Password.Text == tbx_PasswordConfirmation.Text)
+                Bookshop ctx = new Bookshop();
+            if (tbx_Email.Text != "")
             {
                 bool isFound = false;
                 int count = ctx.Users.Count();
@@ -30,30 +31,59 @@ namespace Book_Shop
                         isFound = true;
                     }
                 }
-                if (isFound == false)
+                if (isFound == true)
                 {
+                    NotifyUserError("Duplicate email address, please enter another one", "Error");
                     tbx_Email.Text = "";
-                    Response.Write("<script>alert('Duplicate email address, please enter another one');</script>");
+                    isFound = false;
                 }
                 else
                 {
+                    NotifyUser("Account successfully created, please log in", "Successful");
                     User u = new User();
                     u.UserName = tbx_Username.Text;
                     u.UserType = "RUser";
                     u.EmailAddress = tbx_Email.Text;
                     u.Passcode = tbx_Password.Text;
                     u.DateJoined = DateTime.Today;
+                    u.Title = "";
+                    u.LastName = "";
+                    u.FirstName = "";
+                    u.ShippingAddress = "";
                     ctx.Users.Add(u);
                     ctx.SaveChanges();
-
-                    Response.Redirect("Login.aspx");
+                    tbx_Email.Text = "";
+                    tbx_Username.Text = "";
                 }
+            }
+            else
+            {
+                NotifyUserError("Please fill email address", "Error");
             }
         }
 
         protected void btn_Cancel_Click(object sender, EventArgs e)
         {
+            Response.Redirect("Home.aspx");
+        }
+
+        protected void btn_GoToLogin_Click(object sender, EventArgs e)
+        {
             Response.Redirect("Login.aspx");
+        }
+        protected void NotifyUser(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.success('" + msg + "', '" + type + "')", true);
+        }
+        protected void NotifyUserError(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.error('" + msg + "', '" + type + "')", true);
         }
     }
 }

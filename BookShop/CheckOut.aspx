@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Check Out" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CheckOut.aspx.cs" Inherits="Book_Shop.CheckOut" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>Check Out</h1>
+    <h1>CheckOut Orders</h1>
     <p></p>
 
     <asp:ListView runat="server" ID="lvorder">
@@ -46,60 +46,118 @@
     </asp:ListView>
     <asp:Label ID="Total" runat="server" Text=""></asp:Label>
     <hr />
-    <asp:LinkButton ID="btnorder_save" CssClass="btn btn-primary btn-lg " runat="server" data-toggle="modal" data-target="#myModal">
+    <asp:LinkButton ID="btn_checkout" CssClass="btn btn-primary btn-lg " runat="server" data-toggle="modal" data-target="#myModal">
+      <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> PROCEED TO CHECKOUT</asp:LinkButton><br />
+    <asp:LinkButton ID="btn_checkout_cardn0" CssClass="btn btn-primary btn-lg " runat="server" data-toggle="modal" data-target="#myModalselectcard">
       <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> PROCEED TO CHECKOUT</asp:LinkButton>
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Card Info</h4>
-                </div>
-                <div class="modal-body">
+          <%--  <asp:UpdatePanel ID="upmodal" runat="server" ChildrenAsTriggers="true" UpdateMode="Always">
+                <ContentTemplate>--%>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Card Info</h4>
+                        </div>
+                        <div class="modal-body">
 
-                    <div class="form-group">
-                        <label for="txt_holdername" class="control-label">Card Holder Name</label>
-                        <asp:TextBox ID="txt_holdername" runat="server" autocomplete="off" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_holdername" CssClass="alert-danger" Display="Dynamic" ErrorMessage="Enter Name"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="form-group">
-                        <label for="txt_card_no" class="control-label">Card Number</label>
-                        <asp:TextBox ID="txt_card_no" runat="server" autocomplete="off" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txt_card_no" CssClass="alert-danger" Display="Dynamic" ErrorMessage="Enter CardNo"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="form-group">
-                        <p class="col-md-4">
-                            <label for="ddlexpmonth" class="control-label">Expiration Month</label>
-                            <asp:DropDownList ID="ddlexpmonth" runat="server" CssClass="form-control"></asp:DropDownList>                            
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlexpmonth" CssClass="alert-danger" Display="Dynamic" ErrorMessage="Select Month"></asp:RequiredFieldValidator>
-                        </p>
-                        
-                        <p class="col-md-4">
-                            <label for="ddlexpyear" class="control-label">Expiration Year</label>
-                           <asp:DropDownList ID="ddlexpyear" runat="server" CssClass="form-control"></asp:DropDownList>                            
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlexpyear" CssClass="alert-danger" Display="Dynamic" ErrorMessage="Select Year"></asp:RequiredFieldValidator>
-                        </p>
-                       
-                        <p class="col-md-4">
-                            <label for="txt_cvc" class="control-label">CVC</label>
-                            <asp:TextBox ID="txt_cvc" runat="server" autocomplete="off" CssClass="form-control"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txt_cvc" CssClass="alert-danger" Display="Dynamic" ErrorMessage="Enter CVC"></asp:RequiredFieldValidator>
-                        </p>
-                        
-                    </div>
-                    <br />
-                    <hr />
-                    <br />
+                            <div class="form-group">
+                                <label for="txt_holdername" class="control-label">Card Holder Name</label>
+                                <asp:TextBox ID="txt_holdername" runat="server" autocomplete="off" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_holdername" CssClass="alert-danger" Display="Dynamic" ErrorMessage="Enter Name"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group">
+                                <label for="txt_card_no" class="control-label">Card Number</label>
+                                <asp:TextBox ID="txt_card_no" runat="server" autocomplete="off" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txt_card_no" CssClass="alert-danger" Display="Dynamic" ErrorMessage="Enter CardNo"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group">
+                                <p class="col-md-4">
+                                    <label for="ddlexpmonth" class="control-label">Expiration Month</label>
+                                    <asp:DropDownList ID="ddlexpmonth" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlexpmonth" CssClass="alert-danger" Display="Dynamic" ErrorMessage="Select Month"></asp:RequiredFieldValidator>
+                                </p>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <asp:Button ID="btn_purchase" CssClass="btn btn-primary" runat="server" Text="Continue" OnClick="btn_purchase_Click"  />                   
-                </div>
-            </div>
+                                <p class="col-md-4">
+                                    <label for="ddlexpyear" class="control-label">Expiration Year</label>
+                                    <asp:DropDownList ID="ddlexpyear" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlexpyear" CssClass="alert-danger" Display="Dynamic" ErrorMessage="Select Year"></asp:RequiredFieldValidator>
+                                </p>
+
+                                <p class="col-md-4">
+                                    <label for="txt_cvc" class="control-label">CVV</label>
+                                    <asp:TextBox ID="txt_cvc" runat="server" autocomplete="off" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txt_cvc" CssClass="alert-danger" Display="Dynamic" ErrorMessage="Enter CVV"></asp:RequiredFieldValidator>
+                                </p>
+
+                            </div>
+                            <br />
+                            <hr />
+                            <br />
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <asp:Button ID="btn_purchase" CssClass="btn btn-primary" runat="server" Text="Confirm" OnClick="btn_purchase_Click" />
+                        </div>
+                    </div>
+               <%-- </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="btn_checkout" />
+                     <asp:AsyncPostBackTrigger ControlID="btn_purchase" />
+                </Triggers>
+            </asp:UpdatePanel>--%>
         </div>
     </div>
 
-  
+    <div class="modal fade" id="myModalselectcard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <%--<asp:UpdatePanel ID="udpanelselectcard" runat="server" ChildrenAsTriggers="true" UpdateMode="Always">
+                <ContentTemplate>--%>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalselectcardLabel">Select Credit Card</h4>
+                        </div>
+                        <div class="modal-body">
+                          
+                            <div class="form-group">                                
+                                <p class="col-md-4">
+                                    <label for="RadioButtonListCCard" class="control-label">Select Credit Card</label>
+                                    <asp:RadioButtonList ID="RadioButtonListCCard" runat="server" CssClass="radio-inline">
+                                    </asp:RadioButtonList>
+                                </p>
+                            </div>
+                            <br />
+                              <p class="row">
+                                    <p class="col-md-2">
+                                    <asp:LinkButton ID="lbtnaddnewcard" CssClass="btn btn-primary btn-default " runat="server" data-toggle="modal" data-target="#myModal" data-dismiss="modal"> Add New Card</asp:LinkButton>       
+                                    </p>                                      
+                                    <p>
+                                    </p>
+                                    <br />
+                                    <hr />
+                                    <br />
+                                    <p>
+                                    </p>
+                                </p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <asp:Button ID="btn_selectcard" CssClass="btn btn-primary" runat="server" Text="Confirm" OnClick="btnbtn_selectcard_Click" OnClientClick="return true;" />         
+                        </div>
+                    </div>
+                <%--</ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="btn_checkout" />
+                    <asp:AsyncPostBackTrigger ControlID="lbtnaddnewcard" />
+
+                </Triggers>
+            </asp:UpdatePanel>--%>
+        </div>
+    </div>
+
+
 </asp:Content>

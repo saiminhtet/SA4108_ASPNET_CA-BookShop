@@ -9,32 +9,43 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Title:<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            Title:<asp:TextBox ID="tbx_Title" runat="server"></asp:TextBox>
             <br />
             <br />
-            First Name:<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            First Name:<asp:TextBox ID="tbx_FirstName" runat="server"></asp:TextBox>
             <br />
             <br />
-            Last Name:<asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+            Last Name:<asp:TextBox ID="tbx_LastName" runat="server"></asp:TextBox>
             <br />
             <br />
-            Email Address:<asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+            Email Address:<asp:TextBox ID="tbx_EmailAddress" runat="server" ReadOnly="True"></asp:TextBox>
             <br />
             <br />
-            Shipping Address:<asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+            Shipping Address:<asp:TextBox ID="tbx_ShippingAddress" runat="server"></asp:TextBox>
+            <br />
+            <br />
             <br />
             <br />
             Card Details<br />
             <br />
             Full Name:
-            <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+            <asp:TextBox ID="tbx_FullName" runat="server" ReadOnly="True"></asp:TextBox>
             <br />
             <br />
-            Card Number:<asp:Label ID="Label7" runat="server" Text="Label"></asp:Label>
+            Card Number:<asp:TextBox ID="tbx_CardNumber" runat="server" ReadOnly="True"></asp:TextBox>
             <br />
             <br />
-            Expiry Date:<asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
+            Expiry Month:<asp:TextBox ID="tbx_ExpiryMonth" runat="server" ReadOnly="True"></asp:TextBox>
             <br />
+            <br />
+            Expiry Year:<asp:TextBox ID="tbx_ExpiryYear" runat="server" ReadOnly="True"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="btn_Update" runat="server" OnClick="btn_Update_Click" Text="Update" />
+            &nbsp;<asp:Button ID="btn_ChangePassword" runat="server" OnClick="btn_ChangePassword_Click" Text="Change Password" />
+            <br />
+            <br />
+            <asp:Label ID="lbl_Status" runat="server"></asp:Label>
             <br />
         </div>
     </form>

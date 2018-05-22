@@ -24,22 +24,41 @@ namespace Book_Shop
             users = ctx.Users.ToArray();
             for (int i = 0; i < count; i++)
             {
-                if (tbx_Email.Text == users[i].EmailAddress.ToString())
+                if (tbx_Email.Text == users[i].EmailAddress)
                 {
                     isFound = true;
                 }
             }
             if (isFound == false)
             {
-                Response.Write("<script>alert('User not found, please try again');</script>");
+                NotifyUserError("User not found, please try again", "Error");
                 tbx_Email.Text = "";
             }
             else
             {
                 // send an email contain password to the user
-                Response.Write("<script>alert('Please check your mail box for password');</script>");
-                Response.Redirect("Login.aspx");
+                NotifyUser("A temporary password has been sent to you, please check your email","Successful");
+                tbx_Email.Text = "";
             }
+        }
+
+        protected void btn_GoToLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
+        protected void NotifyUser(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.success('" + msg + "', '" + type + "')", true);
+        }
+        protected void NotifyUserError(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.error('" + msg + "', '" + type + "')", true);
         }
     }
 }
