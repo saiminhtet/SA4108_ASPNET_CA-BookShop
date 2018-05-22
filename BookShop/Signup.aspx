@@ -26,7 +26,7 @@
         <br />
         <br />
         <asp:Button ID="btn_Create" runat="server" Text="Create User" OnClick="Button1_Click" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 501px" />&nbsp<asp:Button ID="btn_Cancel" runat="server" Text="Cancel" OnClick="btn_Cancel_Click" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 23px" Width="102px" />&nbsp
-        <asp:Button ID="Button1" runat="server" Font-Names="Arial" Font-Size="Medium" Text="Login" OnClick="Button1_Click1" />
+        <asp:Button ID="btn_GoToLogin" runat="server" Font-Names="Arial" Font-Size="Medium" Text="Login" OnClick="btn_GoToLogin_Click" />
         <br />
         <br />
         <asp:Label ID="lbl_Status" runat="server" Style="margin-left: 500px" Font-Names="Arial" Font-Size="Medium" ForeColor="Red"></asp:Label>

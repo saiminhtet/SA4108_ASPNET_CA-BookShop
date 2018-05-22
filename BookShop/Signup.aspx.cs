@@ -54,10 +54,10 @@ namespace Book_Shop
 
         protected void btn_Cancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Home.aspx");
         }
 
-        protected void Button1_Click1(object sender, EventArgs e)
+        protected void btn_GoToLogin_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
         }
