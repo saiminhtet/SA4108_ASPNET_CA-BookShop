@@ -34,11 +34,13 @@ namespace Book_Shop
                 {
                     lbl_Status.Text = "Duplicate email address, please enter another one";
                     tbx_Email.Text = "";
-                    //Response.Write("<script>alert('Duplicate email address, please enter another one');</script>");
+                    tbx_Username.Text = "";
                     isFound = false;
                 }
                 else
                 {
+                    tbx_Email.Text = "";
+                    tbx_Username.Text = "";
                     lbl_Status.Text = "Account successfully created, please log in";
                     User u = new User();
                     u.UserName = tbx_Username.Text;
