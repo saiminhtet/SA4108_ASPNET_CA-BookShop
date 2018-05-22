@@ -191,37 +191,37 @@ namespace Book_Shop
         protected void f1Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f1ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
 
         protected void f2Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f2ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
 
         protected void f3Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f3ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
 
         protected void f4Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f4ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
 
         protected void f5Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f5ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
 
         protected void f6Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f6ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details.aspx?isbn=" + selectedISBN);
         }
     }
 }
