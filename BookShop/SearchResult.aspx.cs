@@ -10,24 +10,19 @@ namespace Book_Shop
 {
     public partial class SearchResult : System.Web.UI.Page
     {
-       
-       
         static Cart myCart = new Cart();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                
               //  myCart = new Cart();
             }
-
         }
 
         public IQueryable<BookList> GetBooksList([QueryString("search")] string searchquery)
         {
             if (searchquery != "" && searchquery != null)
             {
-
                 var resultbooks = Result.GetBooklists(searchquery);
                 return resultbooks;
             }
