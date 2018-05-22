@@ -15,7 +15,17 @@ namespace Book_Shop
 
         }
 
-        protected void Login11_Authenticate(object sender, AuthenticateEventArgs e)
+        protected void btn_RecoverPassword_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RecoverPassword.aspx");
+        }
+
+        protected void btn_Signup_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Signup.aspx");
+        }
+
+        protected void btn_Login_Click(object sender, EventArgs e)
         {
             Bookshop ctx = new Bookshop();
 
@@ -25,42 +35,35 @@ namespace Book_Shop
             users = ctx.Users.ToArray();
             for (int i = 0; i < count; i++)
             {
-                if (lgn.UserName == users[i].EmailAddress)
+                if (tbx_EmailAdress.Text == users[i].EmailAddress)
                 {
                     isFound = true;
                 }
             }
             if (isFound == false)
             {
-                lgn.UserName = "";
+                tbx_EmailAdress.Text = "";
+                tbx_Password.Text = "";
+                lbl_Status.Text = "Wrong email address or password, please try again";
             }
             else
             {
-                User u = ctx.Users.Where(x => x.EmailAddress == lgn.UserName).First();
+                User u = ctx.Users.Where(x => x.EmailAddress == tbx_EmailAdress.Text).First();
                 Session["eadd"] = u.EmailAddress;
-                if (u.Passcode != lgn.Password)
+                if (u.Passcode != tbx_Password.Text)
                 {
-                    lgn.UserName = "";
+                    tbx_EmailAdress.Text = "";
+                    tbx_Password.Text = "";
+                    lbl_Status.Text = "Wrong email address or password, please try again";
                 }
-                else if (u.Passcode == lgn.Password && u.UserType == "Owner")
+                else
                 {
-                    Response.Redirect("Dashboard.aspx");
-                }
-                else if (u.Passcode == lgn.Password && u.UserType == "RUser")
-                {
-                    Response.Redirect("Home.aspx");
+                    if (u.Passcode == tbx_Password.Text && u.UserType == "Owner")
+                        Response.Redirect("Dashboard.aspx");
+                    else if (u.Passcode == tbx_Password.Text && u.UserType == "RUser")
+                        Response.Redirect("Home.aspx");
                 }
             }
-        }
-
-        protected void btn_RecoverPassword_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("RecoverPassword.aspx");
-        }
-
-        protected void btn_Signup_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Signup.aspx");
         }
     }
 }
