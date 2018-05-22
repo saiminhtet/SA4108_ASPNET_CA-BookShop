@@ -31,7 +31,7 @@
         <br />
         <br />
         <br />
-        <asp:Button ID="btn_Create" runat="server" Text="Create User" OnClick="Button1_Click" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 450px" Width="120px"/>&nbsp<asp:Button ID="btn_Cancel" runat="server" Text="Cancel" OnClick="btn_Cancel_Click" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 20px" Width="120px" CausesValidation="False" />&nbsp
+        <asp:Button ID="btn_Create" runat="server" Text="Create User" OnClick="btn_Create_Click" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 450px" Width="120px"/>&nbsp<asp:Button ID="btn_Cancel" runat="server" Text="Cancel" OnClick="btn_Cancel_Click" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 20px" Width="120px" CausesValidation="False" />&nbsp
         <asp:Button ID="btn_GoToLogin" runat="server" Font-Names="Arial" Font-Size="Medium" Text="Login" OnClick="btn_GoToLogin_Click" Width="120px" CausesValidation="False" />
         <br />
         <br />
