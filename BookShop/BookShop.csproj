@@ -58,6 +58,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
@@ -193,6 +194,10 @@
     <Content Include="Login.aspx" />
     <Content Include="MyCart.aspx" />
     <Content Include="RecoverPassword.aspx" />
+    <Content Include="resources\brand\ext.png" />
+    <Content Include="resources\image\knowledge-is-power-banner.jpg" />
+    <Content Include="resources\symbol\magnifying_glass_blue.png" />
+    <Content Include="resources\symbol\shopping-cart-blue.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
