@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Book_Shop.Models;
+
 namespace Book_Shop
 {
     public partial class Signup : System.Web.UI.Page
@@ -16,8 +17,8 @@ namespace Book_Shop
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Bookshop ctx = new Bookshop();
-            if (tbx_Username.Text != "" && tbx_Email.Text != "" && tbx_Password.Text != "" && tbx_Password.Text == tbx_PasswordConfirmation.Text)
+                Bookshop ctx = new Bookshop();
+            if (tbx_Email.Text != "")
             {
                 bool isFound = false;
                 int count = ctx.Users.Count();
@@ -30,13 +31,15 @@ namespace Book_Shop
                         isFound = true;
                     }
                 }
-                if (isFound == false)
+                if (isFound == true)
                 {
+                    lbl_Status.Text = "Duplicate email address, please enter another one";
                     tbx_Email.Text = "";
-                    Response.Write("<script>alert('Duplicate email address, please enter another one');</script>");
+                    isFound = false;
                 }
                 else
                 {
+                    lbl_Status.Text = "Account successfully created, please log in";
                     User u = new User();
                     u.UserName = tbx_Username.Text;
                     u.UserType = "RUser";
@@ -45,13 +48,23 @@ namespace Book_Shop
                     u.DateJoined = DateTime.Today;
                     ctx.Users.Add(u);
                     ctx.SaveChanges();
-
-                    Response.Redirect("Login.aspx");
+                    tbx_Email.Text = "";
+                    tbx_Username.Text = "";
                 }
             }
+            else
+            {
+                lbl_Status.Text = "Please fill email address";
+            }
+            
         }
 
         protected void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
+
+        protected void btn_GoToLogin_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
         }

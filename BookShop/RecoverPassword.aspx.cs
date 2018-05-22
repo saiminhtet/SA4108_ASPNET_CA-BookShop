@@ -24,20 +24,21 @@ namespace Book_Shop
             users = ctx.Users.ToArray();
             for (int i = 0; i < count; i++)
             {
-                if (tbx_Email.Text == users[i].EmailAddress.ToString())
+                if (tbx_Email.Text == users[i].EmailAddress)
                 {
                     isFound = true;
                 }
             }
             if (isFound == false)
             {
-                Response.Write("<script>alert('User not found, please try again');</script>");
+                lbl_Status.Text = "User not found, please try again";
                 tbx_Email.Text = "";
             }
             else
             {
                 // send an email contain password to the user
                 lbl_Status.Text = "A temporary password has been sent to you, please check your email.";
+                tbx_Email.Text = "";
             }
         }
 

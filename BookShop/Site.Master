@@ -1,4 +1,8 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Book_Shop.SiteMaster" %>
+﻿<%@ Master 
+    Language="C#" 
+    AutoEventWireup="true" 
+    CodeBehind="Site.master.cs" 
+    Inherits="Book_Shop.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +10,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -17,14 +21,82 @@
     <script src="Scripts/jquery-3.0.0.min.js"></script>
     <script src="Scripts/moment.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
+    
     <link href="Content/bootstrap-datetimepicker.css" rel="stylesheet" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
 
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+   <Link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js" type="text/javascript"></script>
 
+    <style>
+        .navbar-container {
+            margin-top:0px;
+            padding-top:0px;
+            min-width:800px;
+            width:100%;
+            align-content:center;
+            box-shadow: 0px 4px 10px -2px hsl(0, 0%, 80%);
+            background-color:white;
+        }
+        .td1 {
+            width:385px;
+            padding-left: 20px;
+        }
+        .td2 {
+            text-align:left;
+            width:300px;
+        }
+        .td3 {
+            text-align:right;
+            min-width:300px;
+            padding-right: 20px;
+        }
+        #imgMainBrand {
+            padding-top:5px;
+            height:50px;
+            display:inline-block;
+        }
+        #tbxSearch {
+            height:30px;
+            border-radius:20px;
+            width:92%;
+            padding-left: 10px;
+            vertical-align:central;
+            font-family:'Roboto Condensed';
+        }
+        #imgPowerSearch {
+            height:30px;
+            margin-top:1px;
+            display:inline-block;
+        }
+        #imgCart {
+            height:30px;
+            margin-top:1px;
+            display:inline-block;
+        }
+        #btn-right {
+            display:inline-block;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
+        <table class="navbar-container navbar-fixed-top">
+            <tr>
+                <td class="td1"><asp:ImageButton ID="imgMainBrand" runat="server" ImageUrl="~/resources/brand/ext.png" OnClick="imgMainBrand_Click"/></td>
+                <td class="td2"><asp:TextBox ID="tbxSearch" placeholder="Enter title, author or category to search."  runat="server" Text=""></asp:TextBox></td>
+                <td><asp:ImageButton runat="server" ID="imgPowerSearch" ImageUrl="~/resources/symbol/magnifying_glass_blue.png" OnClick="imgPowerSearch_Click"/></td>
+                <td><asp:ImageButton runat="server" ID="imgCart" ImageUrl="~/resources/symbol/shopping-cart-blue.png" OnClick="imgCart_Click"/></td>
+                <td class="td3">
+                    <asp:Button ID="btnSignUp" class="btn-right" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CausesValidation="False" />
+                    <asp:Button ID="btnLogIn" class="btn-right" runat="server" Text="Log In" OnClick="btnLogIn_Click" CausesValidation="False" />
+                    <asp:Button ID="btnUser" class="btn-right" runat="server" Text="Account" OnClick="btnUser_Click" CausesValidation="False"/>
+                    <asp:Button ID="btnLogOut" class="btn-right" runat="server" Text="Log Out"  CausesValidation="False" OnClick="btnLogOut_Click" />
+                </td>
+            </tr>
+        </table>
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -45,8 +117,7 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <%--<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -64,13 +135,14 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>--%>
+        <asp:ContentPlaceHolder ID="ImageBanner" runat="server"></asp:ContentPlaceHolder>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - NUS ISS GDipSA46 Team 6 SA4108 Programming Web Applications using ASP.NET </p>
             </footer>
         </div>
 

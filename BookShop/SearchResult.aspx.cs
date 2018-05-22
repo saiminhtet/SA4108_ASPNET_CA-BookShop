@@ -10,12 +10,12 @@ namespace Book_Shop
 {
     public partial class SearchResult : System.Web.UI.Page
     {
-        static Cart myCart = new Cart();
+        static Cart myCart;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-              //  myCart = new Cart();
+                myCart = (Cart)Session["cart"];
             }
         }
 
