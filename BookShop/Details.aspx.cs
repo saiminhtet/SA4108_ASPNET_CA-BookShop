@@ -9,25 +9,24 @@ namespace Book_Shop
 {
     public partial class details : System.Web.UI.Page
     {
-
+        List<Book> bkColl; //for Sam's method
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string isbn = Request.QueryString["ISBN"];
-            string isbn = "9780385376716"; //FOR TESTING ONLY 
-
-            //Book image
-            imgBook.ImageUrl = "/images/" + isbn + ".jpg";
+            string bkID = Request.QueryString["BookID"];
+            int bookID = Convert.ToInt32(bkID);
 
             Bookshop ctx = new Bookshop();
-            Book b = ctx.Books.Where(x => x.ISBN == isbn).First();
+            Book b = ctx.Books.Where(x => x.BookID == bookID).First();
 
+            //Book image
+            imgBook.ImageUrl = "~/images/" + b.ISBN + ".jpg";
             //Book title
             lblBname.Text = b.Title;
             //Book author
             lblBauthor.Text = b.Author;
             //Book original price
-            lblOprice.Text = b.Price.ToString();
+            lblOprice.Text = "S$"+b.Price.ToString();
             //Book stock
             if (b.Stock > 0)
             {
@@ -39,18 +38,23 @@ namespace Book_Shop
                 btnAddCart.Visible = false;
             }
             //Book ISBN
-            lblIsbn.Text = isbn;
+            lblIsbn.Text = b.ISBN;
+
+
             //Book Category
             int cid = b.CategoryID;
             Category c = ctx.Categories.Where(x => x.CategoryID == cid).First();
             lblCategory.Text = c.Name;
+
+            //Sam's method
+            bkColl = GetRelatedColl();
+            DisplayRelatedColl();
+
         }
 
-
+        //Related books recommendation --- Sam's code
         Bookshop ctx = new Bookshop();
-        List<Book> bkColl;
-
-        //Related books recommendation --- Sam's code   
+        //List<Book> bkColl;
         public List<Book> GetRelatedColl()
         {
             List<Book> bkColl = new List<Book>();
@@ -80,14 +84,13 @@ namespace Book_Shop
             return bkColl;
         }
 
-        //display method
+        //Display the related book --- Sam's code
         public string GetCatStr(int catID)
         {
             return ctx.Categories.ToList().Find(x => x.CategoryID == catID).Name.ToUpper();
         }
 
-
-        public void DisplayFeaturedColl()
+        public void DisplayRelatedColl()
         {
             int i = 0;
             f1Img.ImageUrl = "~/images/" + bkColl[i].ISBN + ".jpg";
@@ -123,12 +126,12 @@ namespace Book_Shop
             i += 1;
         }
 
+        //click on image to go to book details page
         string selectedISBN;
-
         protected void f1Img_Click(object sender, ImageClickEventArgs e)
         {
             selectedISBN = f1ISBN.Text;
-            Response.Redirect("~/details?id=" + selectedISBN);
+            Response.Redirect("~/details?BookID=" + selectedISBN);
         }
 
         protected void f2Img_Click(object sender, ImageClickEventArgs e)
@@ -152,34 +155,37 @@ namespace Book_Shop
 
 
 
+        static Cart myCart = new Cart(); //add to cart
 
         protected void btnAddCart_Click(object sender, EventArgs e)
         {
-            ////Modify book stock
-            ////string isbn = Request.QueryString["ISBN"];
+            //Limit the copy number a customer can buy according to the stock
+            string bkID = Request.QueryString["BookID"];
+            int bookID = Convert.ToInt32(bkID);
             //string isbn = "9780385376716"; //FOR TESTING ONLY 
-            //Bookshop ctx = new Bookshop();
-            //Book b = ctx.Books.Where(x => x.ISBN == isbn).First();
-            //int oStock = b.Stock;
-            //int copy = Convert.ToInt32(txbCopies.Text); //this "copy" refers to how many books the customer want to buy
-            //if(copy<=oStock&&copy>0)
-            //{
-            //    int stock = oStock - copy;
-            //    b.Stock = stock;
-            //    ctx.SaveChanges();
+            Bookshop ctx = new Bookshop();
+            Book b = ctx.Books.Where(x => x.BookID == bookID).First();
+            int oStock = b.Stock;
+            int copy = Convert.ToInt32(txbCopies.Text); //this "copy" refers to how many books the customer want to buy
+            if (copy <= oStock && copy > 0)
+            {
+                //Add to cart
+                string bkPrice = lblOprice.Text;
+                double totalPrice = Double.Parse(bkPrice)*copy;
+                //int bookID = b.BookID;
+                string bktitle = lblBname.Text;
+                CartItem c = new CartItem(bookID, bktitle, copy, totalPrice);
+                myCart.AddToCart(c);
+                Session["cart"] = myCart;
 
-                //Add order information to Cart, goes to Cart Page
-                //Response.Redirect("~");
-
-
-            //}
-            //else
-            //{
-            //    lblStockReminder.Text = "There is only " + oStock + "left.";
-            //}
-
-
+                lblAddCartReminder.Text = "Already Added Into Your Cart";
+            }
+            else
+            {
+                lblAddCartReminder.Text = "Please enter a number less than the available copies.";
+            }
 
         }
+
     }
 }
