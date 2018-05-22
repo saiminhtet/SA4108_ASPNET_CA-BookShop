@@ -1,10 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Book_Shop.Dashboard" %>
+﻿<%@ Page 
+    Title="Dashboard" 
+    Language="C#" 
+    MasterPageFile="~/Site.Master"
+    AutoEventWireup="true" 
+    CodeBehind="Dashboard.aspx.cs" 
+    Inherits="Book_Shop.Dashboard" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+<asp:Content ID="ownerDashboard" ContentPlaceHolderID="MainContent" runat="server">
     <style type="text/css">
         .auto-style1 {
             text-align: center;
@@ -28,13 +30,20 @@
         }
         .auto-style57 {
             text-align: left;
+            width: 200px;
+        }
+        .container {
+            margin-left:auto;
+            margin-right:auto;
+            /*padding-left:50px;*/
+        }
+        .j1 {
+            margin:0;
+            padding:0;
+            vertical-align:top;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server" enctype="multipart/form-data">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div class="auto-style1">
+    <div class="auto-style1">
         <div>
             <span class="auto-style44"><strong>
             <br />
@@ -47,40 +56,68 @@
         </div>
         </div>
         <br />
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <div style="width:100%; margin-left:auto; margin-right:auto;">
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
             <ContentTemplate>
                 <table id="Table1" class="auto-style56">
                     <tr>
                         <td class="auto-style57">
                             <asp:Label ID="Label12" runat="server" Text="Book Image:"></asp:Label>
-                            <asp:FileUpload ID="FileUpload1" runat="server" Width="225px" />
                         </td>
                         <td class="auto-style57">
-                            <asp:Label ID="Label2" runat="server" Text="Title:"></asp:Label>
-                            <asp:TextBox ID="TextBox12" runat="server" placeholder="Enter a (string)"></asp:TextBox>
+                            <asp:Label ID="Label13" runat="server" Text="Title:"></asp:Label>
                         </td>
                         <td class="auto-style57">
-                            <asp:Label ID="Label3" runat="server" Text="CategoryID:"></asp:Label>
-                            <asp:TextBox ID="TextBox13" runat="server" placeholder="Enter a (int)"></asp:TextBox>
+                            <asp:Label ID="Label14" runat="server" Text="CategoryID:"></asp:Label>
                         </td>
                         <td class="auto-style57">
-                            <asp:Label ID="Label4" runat="server" Text="ISBN:"></asp:Label>
-                            <asp:TextBox ID="TextBox14" runat="server" placeholder="Enter a (int)"></asp:TextBox>
+                            <asp:Label ID="Label15" runat="server" Text="ISBN:"></asp:Label>
+                        </td>
+                        </tr>
+                    <tr>
+                        <td class="auto-style57">
+                            <asp:FileUpload ID="FileUpload1" runat="server" Width="225px" cssclass="j1"/>
                         </td>
                         <td class="auto-style57">
-                            <asp:Label ID="Label5" runat="server" Text="Author:"></asp:Label>
-                            <asp:TextBox ID="TextBox15" runat="server" placeholder="Enter a (string)"></asp:TextBox>
+                            <asp:TextBox ID="TextBox12" runat="server" placeholder="Enter a (string)" cssclass="j1"></asp:TextBox>
                         </td>
                         <td class="auto-style57">
-                            <asp:Label ID="Label6" runat="server" Text="Stock:"></asp:Label>
-                            <asp:TextBox ID="TextBox16" runat="server" placeholder="Enter a (int)"></asp:TextBox>
+                            <asp:TextBox ID="TextBox13" runat="server" placeholder="Enter a (int)" cssclass="j1"></asp:TextBox>
+                        </td>
+                        <td class="auto-style57">
+                            <asp:TextBox ID="TextBox14" runat="server" placeholder="Enter a (int)" cssclass="j1"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style57">&nbsp;</td>
+                        <td class="auto-style57">&nbsp;</td>
+                        <td class="auto-style57">&nbsp;</td>
+                        <td class="auto-style57">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style57">
+                            <asp:Label ID="Label16" runat="server" Text="Author:"></asp:Label>
+                        </td>
+                        <td class="auto-style57">
+                            <asp:Label ID="Label17" runat="server" Text="Stock:"></asp:Label>
                         </td>
                         <td class="auto-style57">
                             <asp:Label ID="Label11" runat="server" Text="Price:"></asp:Label>
-                            <asp:TextBox ID="TextBox21" runat="server" placeholder="Enter a (decimal)"></asp:TextBox>
+                        </td>
+                        <td class="auto-style57">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style57">
+                            <asp:TextBox ID="TextBox15" runat="server" placeholder="Enter a (string)" cssclass="j1"></asp:TextBox>
+                        </td>
+                        <td class="auto-style57">
+                            <asp:TextBox ID="TextBox16" runat="server" placeholder="Enter a (int)" cssclass="j1"></asp:TextBox>
+                        </td>
+                        <td class="auto-style57">
+                            <asp:TextBox ID="TextBox21" runat="server" placeholder="Enter a (decimal)" cssclass="j1"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Button ID="Button1" runat="server" Height="60px" OnClick="Button1_Click" Text="Add Book" Width="120px" />
+                            <asp:Button ID="Button1" runat="server" Height="30px" OnClick="Button1_Click" Text="Add Book" Width="120px" />
                         </td>
                     </tr>
                 </table>
@@ -90,6 +127,7 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+            </div>
         <div class="auto-style1">
                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDeleting="OnRowDeleting" OnRowEditing="OnRowEditing" OnRowCancelingEdit="
                             OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" DataKeyNames="BookID">
@@ -201,6 +239,7 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
-    </form>
-    </body>
-</html>
+</asp:Content>
+
+<%--    <form id="form1" runat="server" enctype="multipart/form-data">--%>
+<%--        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
