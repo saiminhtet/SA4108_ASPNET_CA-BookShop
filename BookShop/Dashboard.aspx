@@ -46,27 +46,31 @@
                 <tr>
                     <td>
                         <asp:Label ID="Label2" runat="server" Text="Title:"></asp:Label>
-                        <asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox12" runat="server">Enter a (string)</asp:TextBox>
                     </td>
                     <td>
-                        <asp:Label ID="Label3" runat="server" Text="Category:"></asp:Label>
-                        <asp:TextBox ID="TextBox13" runat="server"></asp:TextBox>
+                        <asp:Label ID="Label3" runat="server" Text="CategoryID:"></asp:Label>
+                        <asp:TextBox ID="TextBox13" runat="server">Enter an (int)</asp:TextBox>
                     </td>
                     <td>
                         <asp:Label ID="Label4" runat="server" Text="ISBN:"></asp:Label>
-                        <asp:TextBox ID="TextBox14" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox14" runat="server">Enter an (int)</asp:TextBox>
                     </td>
                     <td>
                         <asp:Label ID="Label5" runat="server" Text="Author:"></asp:Label>
-                        <asp:TextBox ID="TextBox15" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox15" runat="server">Enter a (string)</asp:TextBox>
                     </td>
                     <td>
                         <asp:Label ID="Label6" runat="server" Text="Stock:"></asp:Label>
-                        <asp:TextBox ID="TextBox16" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox16" runat="server">Enter an (int)</asp:TextBox>
                     </td>
                     <td>
                         <asp:Label ID="Label11" runat="server" Text="Price:"></asp:Label>
-                        <asp:TextBox ID="TextBox21" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox21" runat="server">Enter a (decimal)</asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:Label ID="Label12" runat="server" Text="Book Image:"></asp:Label>
+                        <asp:FileUpload ID="FileUpload1" runat="server" />
                     </td>
                     <td>
                         <asp:Button ID="Button1" runat="server" Height="30px" OnClick="Button1_Click" Text="Add Book" />
@@ -174,11 +178,7 @@
                         <asp:TextBox ID="TextBox18" runat="server"></asp:TextBox>
                     </td>
                     <td>
-                        <asp:Label ID="Label9" runat="server" Text="Discount Type:"></asp:Label>
-                        <asp:TextBox ID="TextBox19" runat="server"></asp:TextBox>
-                    </td>
-                    <td>
-                        <asp:Label ID="Label10" runat="server" Text="Discount Amount:"></asp:Label>
+                        <asp:Label ID="Label10" runat="server" Text="Discount %:"></asp:Label>
                         <asp:TextBox ID="TextBox20" runat="server"></asp:TextBox>
                     </td>
                     <td>

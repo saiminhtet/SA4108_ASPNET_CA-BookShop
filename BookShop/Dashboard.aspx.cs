@@ -11,7 +11,7 @@ namespace Book_Shop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack && true)
+            if (!IsPostBack)
             {
                 DropDownList1.DataSource = BusinessLogic.ByCategory();
                 DropDownList1.DataTextField = "Name";
@@ -63,7 +63,7 @@ namespace Book_Shop
             string isbn = (row.FindControl("TextBox4") as TextBox).Text;
             int catid = Convert.ToInt32((row.FindControl("TextBox5") as TextBox).Text);
             string title = (row.FindControl("TextBox6") as TextBox).Text;
-            BusinessLogic.updatebooks(bookid,title,catid,isbn,author,stock,price);
+            BusinessLogic.updatebooks(bookid, title, catid, isbn, author, stock, price);
             GridView1.EditIndex = -1;
             bindgrid();
         }
@@ -76,6 +76,17 @@ namespace Book_Shop
             string author = TextBox15.Text;
             int stock = Convert.ToInt32(TextBox16.Text);
             decimal price = Convert.ToDecimal(TextBox21.Text);
+            if (FileUpload1.HasFile)
+            {
+                FileUpload1.SaveAs(Server.MapPath("images") + "" + FileUpload1.FileName);
+                Label12.Text = "Image Uploaded";
+                Label12.ForeColor = System.Drawing.Color.ForestGreen;
+            }
+            else
+            {
+                Label12.Text = "Please Select your file";
+                Label12.ForeColor = System.Drawing.Color.Red;
+            }
             try
             {
                 BusinessLogic.AddNewBook(title, catid, isbn, author, stock, price);
@@ -84,6 +95,7 @@ namespace Book_Shop
             {
                 Response.Write(exp.ToString());
             }
+            bindgrid();
         }
     }
 }
