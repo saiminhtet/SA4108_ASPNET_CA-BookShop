@@ -32,7 +32,8 @@ namespace Book_Shop
                     btnUser.Visible = true;
                     btnLogIn.Visible = false;
                     btnSignUp.Visible = false;
-                    btnUser.Text = ctx.Users.ToList().Find(x => x.EmailAddress == emailAddress).UserName;
+                    if (ctx.Users.ToList().Find(x => x.EmailAddress == emailAddress) != null)
+                        btnUser.Text = ctx.Users.ToList().Find(x => x.EmailAddress == emailAddress).UserName;
                 }
                     
             }

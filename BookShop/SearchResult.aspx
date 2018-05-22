@@ -32,7 +32,7 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <a href="Details.aspx?BookID=<%#:Item.BookID%>">
+                                            <a href="Details.aspx?isbn=<%#:Item.ISBN%>">
 
                                                 <asp:Image ID="Image1" runat="server" ImageUrl='<%#"images/" + Item.ISBN + ".jpg"%>' />
                                             </a>
@@ -40,7 +40,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <a href="Details.aspx?BookID=<%#:Item.BookID%>">
+                                            <a href="Details.aspx?isbn=<%#:Item.ISBN%>">
                                                 <span>
                                                     <%#:Item.Title%>                                                    
                                                 </span>

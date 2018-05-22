@@ -13,15 +13,6 @@ namespace Book_Shop {
     public partial class details {
         
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// imgBook control.
         /// </summary>
         /// <remarks>
@@ -83,6 +74,15 @@ namespace Book_Shop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddCart;
+        
+        /// <summary>
+        /// lblAddCartReminder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAddCartReminder;
         
         /// <summary>
         /// lblBookInfo control.
@@ -166,15 +166,6 @@ namespace Book_Shop {
         protected global::System.Web.UI.WebControls.Label f1Price;
         
         /// <summary>
-        /// f1BtnBuy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button f1BtnBuy;
-        
-        /// <summary>
         /// f1ISBN control.
         /// </summary>
         /// <remarks>
@@ -227,15 +218,6 @@ namespace Book_Shop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label f2Price;
-        
-        /// <summary>
-        /// f2BtnBuy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button f2BtnBuy;
         
         /// <summary>
         /// f2ISBN control.
@@ -292,15 +274,6 @@ namespace Book_Shop {
         protected global::System.Web.UI.WebControls.Label f3Price;
         
         /// <summary>
-        /// f3BtnBuy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button f3BtnBuy;
-        
-        /// <summary>
         /// f3ISBN control.
         /// </summary>
         /// <remarks>
@@ -353,15 +326,6 @@ namespace Book_Shop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label f4Price;
-        
-        /// <summary>
-        /// f4BtnBuy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button f4BtnBuy;
         
         /// <summary>
         /// f4ISBN control.

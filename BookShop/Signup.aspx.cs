@@ -14,8 +14,8 @@ namespace Book_Shop
         {
 
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
+        
+        protected void btn_Create_Click(object sender, EventArgs e)
         {
                 Bookshop ctx = new Bookshop();
             if (tbx_Email.Text != "")
@@ -33,19 +33,23 @@ namespace Book_Shop
                 }
                 if (isFound == true)
                 {
-                    lbl_Status.Text = "Duplicate email address, please enter another one";
+                    NotifyUserError("Duplicate email address, please enter another one", "Error");
                     tbx_Email.Text = "";
                     isFound = false;
                 }
                 else
                 {
-                    lbl_Status.Text = "Account successfully created, please log in";
+                    NotifyUser("Account successfully created, please log in", "Successful");
                     User u = new User();
                     u.UserName = tbx_Username.Text;
                     u.UserType = "RUser";
                     u.EmailAddress = tbx_Email.Text;
                     u.Passcode = tbx_Password.Text;
                     u.DateJoined = DateTime.Today;
+                    u.Title = "";
+                    u.LastName = "";
+                    u.FirstName = "";
+                    u.ShippingAddress = "";
                     ctx.Users.Add(u);
                     ctx.SaveChanges();
                     tbx_Email.Text = "";
@@ -54,9 +58,8 @@ namespace Book_Shop
             }
             else
             {
-                lbl_Status.Text = "Please fill email address";
+                NotifyUserError("Please fill email address", "Error");
             }
-            
         }
 
         protected void btn_Cancel_Click(object sender, EventArgs e)
@@ -67,6 +70,20 @@ namespace Book_Shop
         protected void btn_GoToLogin_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
+        }
+        protected void NotifyUser(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.success('" + msg + "', '" + type + "')", true);
+        }
+        protected void NotifyUserError(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.error('" + msg + "', '" + type + "')", true);
         }
     }
 }

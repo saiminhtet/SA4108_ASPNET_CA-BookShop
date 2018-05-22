@@ -31,13 +31,13 @@ namespace Book_Shop
             }
             if (isFound == false)
             {
-                lbl_Status.Text = "User not found, please try again";
+                NotifyUserError("User not found, please try again", "Error");
                 tbx_Email.Text = "";
             }
             else
             {
                 // send an email contain password to the user
-                lbl_Status.Text = "A temporary password has been sent to you, please check your email.";
+                NotifyUser("A temporary password has been sent to you, please check your email","Successful");
                 tbx_Email.Text = "";
             }
         }
@@ -45,6 +45,20 @@ namespace Book_Shop
         protected void btn_GoToLogin_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
+        }
+        protected void NotifyUser(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.success('" + msg + "', '" + type + "')", true);
+        }
+        protected void NotifyUserError(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.error('" + msg + "', '" + type + "')", true);
         }
     }
 }

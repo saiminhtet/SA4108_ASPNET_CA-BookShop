@@ -31,7 +31,7 @@ namespace Book_Shop
                     foreach (var i in itmColl)
                     {
                         if (i.bkID == itm.bkID)
-                        { i.orderQty += 1; IsExists = true; break; }
+                        { i.orderQty += itm.orderQty; IsExists = true; break; }
                     }
                     if (!IsExists) itmColl.Add(itm);
                     return AddToCartOK;

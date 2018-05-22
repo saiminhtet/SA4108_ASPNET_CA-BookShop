@@ -85,10 +85,10 @@
     <form runat="server">
         <table class="navbar-container navbar-fixed-top">
             <tr>
-                <td class="td1"><asp:ImageButton ID="imgMainBrand" runat="server" ImageUrl="~/resources/brand/ext.png" OnClick="imgMainBrand_Click"/></td>
+                <td class="td1"><asp:ImageButton ID="imgMainBrand" runat="server" ImageUrl="~/resources/brand/ext.png" OnClick="imgMainBrand_Click" CausesValidation="False"/></td>
                 <td class="td2"><asp:TextBox ID="tbxSearch" placeholder="Enter title, author or category to search."  runat="server" Text=""></asp:TextBox></td>
-                <td><asp:ImageButton runat="server" ID="imgPowerSearch" ImageUrl="~/resources/symbol/magnifying_glass_blue.png" OnClick="imgPowerSearch_Click"/></td>
-                <td><asp:ImageButton runat="server" ID="imgCart" ImageUrl="~/resources/symbol/shopping-cart-blue.png" OnClick="imgCart_Click"/></td>
+                <td><asp:ImageButton runat="server" ID="imgPowerSearch" ImageUrl="~/resources/symbol/magnifying_glass_blue.png" OnClick="imgPowerSearch_Click" CausesValidation="False"/></td>
+                <td><asp:ImageButton runat="server" ID="imgCart" ImageUrl="~/resources/symbol/shopping-cart-blue.png" OnClick="imgCart_Click" CausesValidation="False"/></td>
                 <td class="td3">
                     <asp:Button ID="btnSignUp" class="btn-right" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CausesValidation="False" />
                     <asp:Button ID="btnLogIn" class="btn-right" runat="server" Text="Log In" OnClick="btnLogIn_Click" CausesValidation="False" />

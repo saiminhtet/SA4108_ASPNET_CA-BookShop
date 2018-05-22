@@ -9,37 +9,24 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Title:<asp:DropDownList ID="DropDownList1" runat="server">
-                <asp:ListItem>Mr</asp:ListItem>
-                <asp:ListItem>Ms</asp:ListItem>
-            </asp:DropDownList>
+            Title:<asp:TextBox ID="tbx_Title" runat="server"></asp:TextBox>
             <br />
             <br />
-            First Name:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            First Name:<asp:TextBox ID="tbx_FirstName" runat="server"></asp:TextBox>
             <br />
             <br />
-            Last Name:<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            Last Name:<asp:TextBox ID="tbx_LastName" runat="server"></asp:TextBox>
             <br />
             <br />
-            Email Address:<asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+            Email Address:<asp:TextBox ID="tbx_EmailAddress" runat="server" ReadOnly="True"></asp:TextBox>
             <br />
             <br />
-            Shipping Address:<asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+            Shipping Address:<asp:TextBox ID="tbx_ShippingAddress" runat="server"></asp:TextBox>
             <br />
-            <br />
-            Card Details<br />
-            <br />
-            Full Name:
-            <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
-            <br />
-            <br />
-            Card Number:<asp:Label ID="Label7" runat="server" Text="Label"></asp:Label>
-            <br />
-            <br />
-            Expiry Date:<asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
             <br />
             <br />
             <asp:Button ID="btn_Update" runat="server" OnClick="btn_Update_Click" Text="Update" />
+            &nbsp;<asp:Button ID="btn_ChangePassword" runat="server" OnClick="btn_ChangePassword_Click" Text="Change Password" />
             <br />
             <br />
             <asp:Label ID="lbl_Status" runat="server"></asp:Label>
