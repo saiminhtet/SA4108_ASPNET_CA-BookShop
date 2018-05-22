@@ -33,7 +33,9 @@ namespace Book_Shop
             {
                 if (tbx_Password.Text == tbx_NewPassword.Text)
                 {
-                    lbl_Status.Text = "New password cannot be the same as old password";
+                    NotifyUser("New password cannot be the same as old password", "Error");
+
+                    // lbl_Status.Text = "New password cannot be the same as old password";
                     tbx_Password.Text = "";
                     tbx_NewPassword.Text = "";
                     tbx_ConfirmPassword.Text = "";
@@ -58,6 +60,13 @@ namespace Book_Shop
         protected void btn_Cancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("Profile.aspx");
+        }
+        protected void NotifyUser(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.success('" + msg + "', '" + type + "')", true);
         }
     }
 }
