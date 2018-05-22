@@ -18,18 +18,14 @@ namespace Book_Shop
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-           
+            
+
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session["UserID"] = 1;
-            Session["ISBN"] = "";
-            Session["Title"] = "Black Edge"; //Black Edge
-            Session["Category"] = "2";
-            Session["Author"] = "Rick Riordan"; //Rick Riordan
-
             // Session Variables Initialization
+            Session["UserID"] = 0;
             Session["bkTitle"] = "";
             Session["bkCat"] = "";
             Session["bkAuthor"] = "";
