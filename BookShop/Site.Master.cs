@@ -11,7 +11,6 @@ namespace Book_Shop
     {
         static Cart myCart;
         string searchText;
-        string userName;
         Book_Shop.Models.Bookshop ctx = new Book_Shop.Models.Bookshop();
 
         protected void Page_Load(object sender, EventArgs e)

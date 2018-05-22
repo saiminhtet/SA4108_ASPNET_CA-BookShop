@@ -73,6 +73,8 @@
     </style>
     <br />
     <div style="align-items:center; padding-left:100px; padding-right:100px;">
+<%--        <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="featuredPanel">
+            <ContentTemplate>--%>
     <table class="tblFeatured">
         <tr>
             <td class="f1">
@@ -131,6 +133,8 @@
             </td>
         </tr>
     </table>
+<%--        </ContentTemplate>
+            </asp:UpdatePanel>--%>
     <br />
     <br />
     <div style="align-content:center; text-align:center;">

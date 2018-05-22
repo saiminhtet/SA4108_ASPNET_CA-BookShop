@@ -28,15 +28,27 @@ namespace Book_Shop
             }
         }
 
+        protected void NotifyUser(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "toastr_message", "toastr.success(" + msg + ", " + type + " )", true);
+        }
+        protected void AddItem(int bkID, string title, double price)
+        {
+            CartItem c = new CartItem(bkID, title, 1, price);
+            string temp = myCart.AddToCart(c);
+            if (temp == Cart.AddToCartOK)
+                NotifyUser("Added item to cart successfully", "Success");
+            else if (temp == Cart.AddToCartNG)
+                NotifyUser("Unable to add item to cart", "Error");
+            Session["cart"] = myCart;
+        }
         protected void f1BtnBuy_Click(object sender, EventArgs e)
         {
             string strPrice = f1Price.Text;
             int bkID = GetBkID(f1ISBN.Text);
             string title = f1Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
-            Session["cart"] = myCart;
+            AddItem(bkID, title, price);
         }
 
         protected void f2BtnBuy_Click(object sender, EventArgs e)
@@ -45,9 +57,7 @@ namespace Book_Shop
             int bkID = GetBkID(f2ISBN.Text);
             string title = f2Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
-            Session["cart"] = myCart;
+            AddItem(bkID, title, price);
         }
 
         protected void f3BtnBuy_Click(object sender, EventArgs e)
@@ -56,9 +66,7 @@ namespace Book_Shop
             int bkID = GetBkID(f3ISBN.Text);
             string title = f3Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
-            Session["cart"] = myCart;
+            AddItem(bkID, title, price);
         }
 
         protected void f4BtnBuy_Click(object sender, EventArgs e)
@@ -67,9 +75,7 @@ namespace Book_Shop
             int bkID = GetBkID(f4ISBN.Text);
             string title = f4Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
-            Session["cart"] = myCart;
+            AddItem(bkID, title, price);
         }
 
         protected void f5BtnBuy_Click(object sender, EventArgs e)
@@ -78,9 +84,7 @@ namespace Book_Shop
             int bkID = GetBkID(f5ISBN.Text);
             string title = f5Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
-            Session["cart"] = myCart;
+            AddItem(bkID, title, price);
         }
 
         protected void f6BtnBuy_Click(object sender, EventArgs e)
@@ -89,9 +93,7 @@ namespace Book_Shop
             int bkID = GetBkID(f6ISBN.Text);
             string title = f6Title.Text;
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            CartItem c = new CartItem(bkID, title, 1, price);
-            myCart.AddToCart(c);
-            Session["cart"] = myCart;
+            AddItem(bkID, title, price);
         }
 
         public List<Book> GetFeaturedColl()
@@ -99,6 +101,7 @@ namespace Book_Shop
             List<Book> bkColl = new List<Book>();
             Random r = new Random();
             int ind = (int)(r.NextDouble() * (ctx.Books.ToList().Count));
+            if (ind == 0) ind += 1;
             bkColl.Add(ctx.Books.ToList().Find(x => x.BookID == ind));
 
             bool repeatBool = false;

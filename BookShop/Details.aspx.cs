@@ -56,6 +56,7 @@ namespace Book_Shop
             List<Book> bkColl = new List<Book>();
             Random r = new Random();
             int ind = (int)(r.NextDouble() * (ctx.Books.ToList().Count));
+            if (ind == 0) ind += 1;
             bkColl.Add(ctx.Books.ToList().Find(x => x.BookID == ind));
 
             bool repeatBool = false;

@@ -12,8 +12,8 @@ namespace Book_Shop
         public List<CartItem> itmColl { get; protected set; }
 
         // Messages
-        const string AddToCartNG = "Failed to add item to cart, please try again.";
-        const string AddToCartOK = "Added item to cart.";
+        public const string AddToCartNG = "Failed to add item to cart, please try again.";
+        public const string AddToCartOK = "Added item to cart.";
 
         public Cart()
         {
@@ -84,7 +84,5 @@ namespace Book_Shop
                 }
             }
         }
-
-        
     }
 }
