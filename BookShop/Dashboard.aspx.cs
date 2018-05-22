@@ -11,7 +11,7 @@ namespace Book_Shop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!IsPostBack && true)
             {
                 DropDownList1.DataSource = BusinessLogic.ByCategory();
                 DropDownList1.DataTextField = "Name";
