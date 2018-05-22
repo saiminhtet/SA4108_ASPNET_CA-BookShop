@@ -67,42 +67,6 @@ namespace Book_Shop {
         protected global::System.Web.UI.WebControls.TextBox tbx_ShippingAddress;
         
         /// <summary>
-        /// tbx_FullName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbx_FullName;
-        
-        /// <summary>
-        /// tbx_CardNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbx_CardNumber;
-        
-        /// <summary>
-        /// tbx_ExpiryMonth control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbx_ExpiryMonth;
-        
-        /// <summary>
-        /// tbx_ExpiryYear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbx_ExpiryYear;
-        
-        /// <summary>
         /// btn_Update control.
         /// </summary>
         /// <remarks>
