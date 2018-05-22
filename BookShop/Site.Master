@@ -76,7 +76,7 @@
     <form runat="server">
         <table class="navbar-container navbar-fixed-top">
             <tr>
-                <td class="td1"><asp:ImageButton ID="imgMainBrand" runat="server" ImageUrl="~/resources/brand/ext.png"/></td>
+                <td class="td1"><asp:ImageButton ID="imgMainBrand" runat="server" ImageUrl="~/resources/brand/ext.png" OnClick="imgMainBrand_Click"/></td>
                 <td class="td2"><asp:TextBox ID="tbxSearch" placeholder="Enter title, author or category to search."  runat="server" Text=""></asp:TextBox></td>
                 <td><asp:ImageButton runat="server" ID="imgPowerSearch" ImageUrl="~/resources/symbol/magnifying_glass_blue.png" OnClick="imgPowerSearch_Click"/></td>
                 <td><asp:ImageButton runat="server" ID="imgCart" ImageUrl="~/resources/symbol/shopping-cart-blue.png" OnClick="imgCart_Click"/></td>
@@ -126,6 +126,7 @@
                 </div>
             </div>
         </div>--%>
+        <asp:ContentPlaceHolder ID="ImageBanner" runat="server"></asp:ContentPlaceHolder>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

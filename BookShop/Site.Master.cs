@@ -47,5 +47,10 @@ namespace Book_Shop
             Session["cart"] = myCart;
             Response.Redirect("~/MyCart.aspx");
         }
+
+        protected void imgMainBrand_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/Home");
+        }
     }
 }
