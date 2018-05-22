@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CheckOut.aspx.cs" Inherits="Book_Shop.CheckOut" %>
+﻿<%@ Page Title="Check Out" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CheckOut.aspx.cs" Inherits="Book_Shop.CheckOut" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>Order Review</h1>
+    <h1>Check Out</h1>
     <p></p>
 
     <asp:ListView runat="server" ID="lvorder">
@@ -95,7 +95,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <asp:Button ID="btn_purchase" CssClass="btn btn-primary" runat="server" Text="Purchase" OnClick="btn_purchase_Click"  />                   
+                    <asp:Button ID="btn_purchase" CssClass="btn btn-primary" runat="server" Text="Continue" OnClick="btn_purchase_Click"  />                   
                 </div>
             </div>
         </div>

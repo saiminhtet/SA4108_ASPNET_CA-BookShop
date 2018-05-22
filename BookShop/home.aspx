@@ -1,7 +1,7 @@
 ﻿<%@ Page 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeBehind="home.aspx.cs" 
+    CodeBehind="Home.aspx.cs" 
     Inherits="Book_Shop.home" %>
 
 <!DOCTYPE html>

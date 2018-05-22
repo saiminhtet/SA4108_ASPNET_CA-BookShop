@@ -16,14 +16,16 @@ namespace Book_Shop.Models
         public int UserID { get; set; }
 
         [Required]
-        [MaxLength(50)]
-        public byte[] FullName { get; set; }
+        [StringLength(50)]
+        public string FullName { get; set; }
 
         [Required]
         [StringLength(50)]
         public string CardNumber { get; set; }
 
-        public DateTime ExpiryDate { get; set; }
+        public int ExpiryMonth { get; set; }
+
+        public int ExpiryYear { get; set; }
 
         public int SecurityNumber { get; set; }
     }

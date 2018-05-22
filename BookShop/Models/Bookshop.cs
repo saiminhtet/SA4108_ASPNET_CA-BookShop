@@ -38,8 +38,12 @@ namespace Book_Shop.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<CreditCard>()
+                .Property(e => e.FullName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CreditCard>()
                 .Property(e => e.CardNumber)
-                .IsFixedLength();
+                .IsUnicode(false);
 
             modelBuilder.Entity<Transaction>()
                 .Property(e => e.UserName)
