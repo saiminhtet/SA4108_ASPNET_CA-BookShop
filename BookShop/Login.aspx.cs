@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Book_Shop.Models;
+
 namespace Book_Shop
 {
     public partial class Login1 : System.Web.UI.Page
@@ -16,7 +17,7 @@ namespace Book_Shop
 
         protected void Login11_Authenticate(object sender, AuthenticateEventArgs e)
         {
-            Bookshop  ctx = new Bookshop();
+            Bookshop ctx = new Bookshop();
 
             bool isFound = false;
             int count = ctx.Users.Count();

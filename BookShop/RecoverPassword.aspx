@@ -4,20 +4,19 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <%--<!DOCTYPE html>
+    <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>--%>
-    <form id="form1" runat="server">
+<%-- </form>
+</body>
+</html>--%>
         <div>
-            <asp:Label ID="lbl_Title" runat="server" Text="Please fill up email address to receive new password"></asp:Label><br />
+            <br />
             <asp:Label ID="lbl_Email" runat="server" Text="Email Address"></asp:Label>&nbsp<asp:TextBox ID="tbx_Email" runat="server"></asp:TextBox><br />
-            <asp:Button ID="btn_Submit" runat="server" Text="Submit" OnClick="btn_Submit_Click" />
+            <asp:Button ID="btn_Submit" runat="server" Text="Submit" OnClick="btn_Submit_Click" />&nbsp
+            <asp:Button ID="btn_GoToLogin" runat="server" Text="Login" OnClick="btn_GoToLogin_Click" />
+            <br /><asp:Label ID="lbl_Status" runat="server"></asp:Label>
         </div>
-        <%-- </form>
+<%-- </form>
 </body>
 </html>--%>
 </asp:Content>

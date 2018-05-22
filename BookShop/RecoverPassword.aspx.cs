@@ -37,9 +37,13 @@ namespace Book_Shop
             else
             {
                 // send an email contain password to the user
-                Response.Write("<script>alert('Please check your mail box for password');</script>");
-                Response.Redirect("Login.aspx");
+                lbl_Status.Text = "A temporary password has been sent to you, please check your email.";
             }
+        }
+
+        protected void btn_GoToLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
         }
     }
 }
