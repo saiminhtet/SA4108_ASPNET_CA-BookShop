@@ -16,7 +16,7 @@ namespace Book_Shop
 
         protected void Login11_Authenticate(object sender, AuthenticateEventArgs e)
         {
-           Bookshop  ctx = new Bookshop();
+            Bookshop  ctx = new Bookshop();
 
             bool isFound = false;
             int count = ctx.Users.Count();
@@ -24,7 +24,7 @@ namespace Book_Shop
             users = ctx.Users.ToArray();
             for (int i = 0; i < count; i++)
             {
-                if (lgn.UserName == users[i].UserID.ToString())
+                if (lgn.UserName == users[i].EmailAddress)
                 {
                     isFound = true;
                 }
@@ -35,8 +35,8 @@ namespace Book_Shop
             }
             else
             {
-                User u = ctx.Users.Where(x => x.UserID.ToString() == lgn.UserName).First();
-                Session["UserID"] = u.UserID;
+                User u = ctx.Users.Where(x => x.EmailAddress == lgn.UserName).First();
+                Session["eadd"] = u.EmailAddress;
                 if (u.Passcode != lgn.Password)
                 {
                     lgn.UserName = "";
