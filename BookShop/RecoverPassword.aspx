@@ -23,7 +23,7 @@
             <asp:Button ID="btn_Submit" runat="server" Text="Submit" OnClick="btn_Submit_Click" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 450px" Width="100px"/>&nbsp
             <asp:Button ID="btn_GoToLogin" runat="server" Text="Login" OnClick="btn_GoToLogin_Click" Font-Names="Arial" Font-Size="Medium" CausesValidation="False" Style="margin-left: 133px" Width="100px"/>
             <br />
-            <br /><asp:Label ID="lbl_Status" runat="server" Style="margin-left: 450px"></asp:Label>
+            <br /><asp:Label ID="lbl_Status" runat="server" Style="margin-left: 450px" Font-Names="Arial" Font-Size="Medium"></asp:Label>
             <br />
         </div>
 <%-- </form>
