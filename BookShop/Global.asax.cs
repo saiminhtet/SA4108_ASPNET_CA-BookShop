@@ -31,6 +31,7 @@ namespace Book_Shop
             Session["bkAuthor"] = "";
             Session["bkISBN"] = "";
             Session["cart"] = new Cart();
+            Session["eadd"] = "";
 
         }
 
