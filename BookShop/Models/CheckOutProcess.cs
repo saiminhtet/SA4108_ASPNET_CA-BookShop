@@ -24,6 +24,16 @@ namespace Book_Shop.Models
                 };
                 entities.CreditCards.Add(creditCard);
                 entities.SaveChanges();
+
+            }
+        }
+
+        public static List<CreditCard> GetCreditCard(int userid)
+        {
+            using (Bookshop entities = new Bookshop())
+            {
+                List<CreditCard> creditcardlist = entities.CreditCards.Where(c => c.UserID == userid).ToList<CreditCard>();
+                return creditcardlist;
             }
         }
     }
