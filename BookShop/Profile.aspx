@@ -9,19 +9,22 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Title:<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            Title:<asp:DropDownList ID="DropDownList1" runat="server">
+                <asp:ListItem>Mr</asp:ListItem>
+                <asp:ListItem>Ms</asp:ListItem>
+            </asp:DropDownList>
             <br />
             <br />
-            First Name:<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            First Name:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             <br />
             <br />
-            Last Name:<asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+            Last Name:<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
             <br />
             <br />
             Email Address:<asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
             <br />
             <br />
-            Shipping Address:<asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+            Shipping Address:<asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
             <br />
             <br />
             Card Details<br />
@@ -35,6 +38,11 @@
             <br />
             Expiry Date:<asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
             <br />
+            <br />
+            <asp:Button ID="btn_Update" runat="server" OnClick="btn_Update_Click" Text="Update" />
+            <br />
+            <br />
+            <asp:Label ID="lbl_Status" runat="server"></asp:Label>
             <br />
         </div>
     </form>
