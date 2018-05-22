@@ -25,7 +25,7 @@
         <br />
         <br />
         <br />
-        <asp:Button ID="btn_Change" runat="server" Text="Change Password" OnClick="btn_Change_Click" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 450px" Width="180px"/>&nbsp<asp:Button ID="btn_Cancel" runat="server" Text="Cancel" OnClick="btn_Cancel_Click" Font-Names="Arial" Font-Size="Medium" CausesValidation="False" Width="180px"/>
+        <asp:Button ID="btn_Change" runat="server" Text="Change Password" OnClick="btn_Change_Click" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 450px" Width="170px"/>&nbsp<asp:Button ID="btn_Cancel" runat="server" Text="Cancel" OnClick="btn_Cancel_Click" Font-Names="Arial" Font-Size="Medium" CausesValidation="False" Width="170px"/>
         <br />
         <br />
         <asp:Label ID="lbl_Status" runat="server" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 450px"></asp:Label>
