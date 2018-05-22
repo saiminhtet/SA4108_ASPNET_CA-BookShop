@@ -13,10 +13,10 @@ namespace Book_Shop
         {
             if (!IsPostBack)
             {
-                DropDownList1.DataSource = BusinessLogic.ByCategory();
-                DropDownList1.DataTextField = "Name";
-                DropDownList1.DataValueField = "CategoryID";
-                DropDownList1.DataBind();
+                ListBox1.DataSource = BusinessLogic.ByCategory();
+                ListBox1.DataTextField = "Name";
+                ListBox1.DataValueField = "CategoryID";
+                ListBox1.DataBind();
                 ListBox1.DataSource = BusinessLogic.AllBooks();
                 ListBox1.DataTextField = "Title";
                 ListBox1.DataValueField = "BookID";
@@ -96,6 +96,11 @@ namespace Book_Shop
                 Response.Write(exp.ToString());
             }
             bindgrid();
+        }
+
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

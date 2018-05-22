@@ -66,5 +66,18 @@ namespace Book_Shop
                 entities.SaveChanges();
             }
         }
+
+        public static void adddiscount(int promoid, string promoitem, DateTime startdate, DateTime enddate, int discountamt)
+        {
+            using (Bookshop entities = new Bookshop())
+            {
+                Promotion promotion = entities.Promotions.Where(x => x.PromoID == promoid).First<Promotion>();
+                promotion.PromoID = promoid;
+                promotion.PromoItem = promoitem;
+                promotion.StartDate = startdate;
+                promotion.EndDate = enddate;
+                promotion.DiscountAmt = discountamt;
+            }
+        }
     }
 }

@@ -19,6 +19,9 @@
             font-size: x-large;
             text-decoration: underline;
         }
+        .auto-style46 {
+            width: 230px;
+        }
     </style>
 </head>
 <body>
@@ -151,7 +154,7 @@
                         <asp:Label ID="Label1" runat="server" Text="Apply Discount By:"></asp:Label>
                     </td>
                     <td class="auto-style43">
-                        <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                             <asp:ListItem>Title</asp:ListItem>
                             <asp:ListItem>Category</asp:ListItem>
                             <asp:ListItem>Author</asp:ListItem>
@@ -160,28 +163,28 @@
                     </td>
                     <td>
                         <asp:ListBox ID="ListBox1" runat="server" Width="100%"></asp:ListBox>
-                        <asp:DropDownList ID="DropDownList1" runat="server" Width="100%">
-                            <asp:ListItem></asp:ListItem>
-                        </asp:DropDownList>
                     </td>
                 </tr>
             </table>
             <br />
             <table id="Table6" style="width:100%;">
                 <tr>
-                    <td>
+                    <td class="auto-style46">
                         <asp:Label ID="Label7" runat="server" Text="Start Date:"></asp:Label>
+                        <br />
                         <asp:TextBox ID="TextBox17" runat="server"></asp:TextBox>
                     </td>
-                    <td>
+                    <td class="auto-style46">
                         <asp:Label ID="Label8" runat="server" Text="End Date:"></asp:Label>
+                        <br />
                         <asp:TextBox ID="TextBox18" runat="server"></asp:TextBox>
                     </td>
-                    <td>
+                    <td class="auto-style46">
                         <asp:Label ID="Label10" runat="server" Text="Discount %:"></asp:Label>
+                        <br />
                         <asp:TextBox ID="TextBox20" runat="server"></asp:TextBox>
                     </td>
-                    <td>
+                    <td class="auto-style46">
                         <asp:Button ID="Button3" runat="server" Text="Add Discount" Height="30px" />
                     </td>
                 </tr>
