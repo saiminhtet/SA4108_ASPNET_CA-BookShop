@@ -30,7 +30,10 @@ namespace Book_Shop
 
         protected void NotifyUser(string msg, string type)
         {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "toastr_message", "toastr.success(" + msg + ", " + type + " )", true);
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.success('" + msg + "', '" + type + "')", true);
         }
         protected void AddItem(int bkID, string title, double price)
         {
