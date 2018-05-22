@@ -18,9 +18,11 @@ namespace Book_Shop
         {
             if (!IsPostBack)
             {
-                userid = 2;
-                CheckExistingCredit(userid);
+                Bookshop ctx = new Bookshop();
                 useremail = Session["eadd"].ToString();
+                if (useremail == null) Response.Redirect("~/Login.aspx");
+                userid = ctx.Users.ToList().Find(x => x.EmailAddress == useremail).UserID;
+                CheckExistingCredit(userid);
                 DDL_Month_Year_Bind();
                 myCart = (Cart)Session["cart"];
                 BindGrid();
