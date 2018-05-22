@@ -10,19 +10,22 @@ namespace Book_Shop
 {
     public partial class CheckOut : System.Web.UI.Page
     {
-       static int userid;
-        
-        static Cart myCart = new Cart();
+        static string useremail;
+        static int userid;
+
+        static Cart myCart;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                userid = (int)Session["UserID"];
+                userid = 2;
+                CheckExistingCredit(userid);
+                useremail = Session["eadd"].ToString();
                 DDL_Month_Year_Bind();
                 myCart = (Cart)Session["cart"];
                 BindGrid();
-            }  
-            
+            }
+
         }
 
         private void BindGrid()
@@ -31,6 +34,24 @@ namespace Book_Shop
             lvorder.DataBind();
         }
 
+        private void CheckExistingCredit(int userid)
+        {
+            List<CreditCard> Cards = CheckOutProcess.GetCreditCard(userid);
+            if (Cards.Count == 0)
+            {
+                btn_checkout_cardn0.Visible = false;
+            }
+            else
+            {
+
+                RadioButtonListCCard.DataSource = Cards.ToList();
+                RadioButtonListCCard.DataTextField = "CardNumber";
+                RadioButtonListCCard.DataValueField = "CardID";
+                RadioButtonListCCard.DataBind();
+
+                btn_checkout.Visible = false;
+            }
+        }
         private void DDL_Month_Year_Bind()
         {
             DateTimeFormatInfo info = DateTimeFormatInfo.GetInstance(null);
@@ -46,6 +67,14 @@ namespace Book_Shop
             }
         }
 
+        private void ClearText()
+        {
+            txt_card_no.Text = "";
+            txt_cvc.Text = "";
+            txt_holdername.Text = "";
+            ddlexpmonth.SelectedValue = "1";
+            ddlexpyear.SelectedValue = "2018";
+        }
         protected void btn_purchase_Click(object sender, EventArgs e)
         {
             string name = txt_holdername.Text;
@@ -55,13 +84,23 @@ namespace Book_Shop
             int cvc = Int16.Parse(txt_cvc.Text);
             try
             {
-                CheckOutProcess.AddCardInfo(userid,name,cardno,month,year,cvc);
+                CheckOutProcess.AddCardInfo(userid, name, cardno, month, year, cvc);
+                ClearText();
+
             }
             catch (Exception exp)
             {
                 Response.Write(exp.ToString());
             }
-           
+            Session["cardno"] = cardno;
+            Response.Redirect("~/OrderSummary.aspx");
+        }     
+
+        protected void btnbtn_selectcard_Click(object sender, EventArgs e)
+        {
+            string cardno = RadioButtonListCCard.SelectedItem.ToString();
+            Session["cardno"] = cardno;
+            Response.Redirect("~/OrderSummary.aspx");
         }
     }
 }

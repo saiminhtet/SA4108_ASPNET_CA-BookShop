@@ -31,13 +31,22 @@ namespace Book_Shop {
         protected global::System.Web.UI.WebControls.Label Total;
         
         /// <summary>
-        /// btnorder_save control.
+        /// btn_checkout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnorder_save;
+        protected global::System.Web.UI.WebControls.LinkButton btn_checkout;
+        
+        /// <summary>
+        /// btn_checkout_cardn0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_checkout_cardn0;
         
         /// <summary>
         /// txt_holdername control.
@@ -137,5 +146,32 @@ namespace Book_Shop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_purchase;
+        
+        /// <summary>
+        /// RadioButtonListCCard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListCCard;
+        
+        /// <summary>
+        /// lbtnaddnewcard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnaddnewcard;
+        
+        /// <summary>
+        /// btn_selectcard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_selectcard;
     }
 }
