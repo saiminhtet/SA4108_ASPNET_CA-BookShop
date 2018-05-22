@@ -81,9 +81,9 @@
                 <td><asp:ImageButton runat="server" ID="imgPowerSearch" ImageUrl="~/resources/symbol/magnifying_glass_blue.png" OnClick="imgPowerSearch_Click"/></td>
                 <td><asp:ImageButton runat="server" ID="imgCart" ImageUrl="~/resources/symbol/shopping-cart-blue.png" OnClick="imgCart_Click"/></td>
                 <td class="td3">
-                    <asp:Button ID="btnSignUp" class="btn-right" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" />
-                    <asp:Button ID="btnLogIn" class="btn-right" runat="server" Text="Log In" OnClick="btnLogIn_Click" />
-                    <asp:Button ID="btnUser" class="btn-right" runat="server" Text="Account" OnClick="btnUser_Click"/>
+                    <asp:Button ID="btnSignUp" class="btn-right" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CausesValidation="False" />
+                    <asp:Button ID="btnLogIn" class="btn-right" runat="server" Text="Log In" OnClick="btnLogIn_Click" CausesValidation="False" />
+                    <asp:Button ID="btnUser" class="btn-right" runat="server" Text="Account" OnClick="btnUser_Click" CausesValidation="False"/>
                 </td>
             </tr>
         </table>
