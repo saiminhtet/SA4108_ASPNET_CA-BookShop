@@ -160,7 +160,7 @@
             <ContentTemplate>
                 <table id="Table2" align="center" style="width:100%;">
                     <tr>
-                        <td class="auto-style54"><strong>
+                        <td class="auto-style54" style="vertical-align: top"><strong>
                             <asp:Label ID="Label1" runat="server" CssClass="auto-style55" Text="Apply Discount By:"></asp:Label>
                             </strong></td>
                         <td class="auto-style43">
