@@ -23,7 +23,6 @@ namespace Book_Shop
         {
             if (!IsPostBack)
             {
-                btnUser.Visible = false;
                 bkColl = GetFeaturedColl();
                 DisplayFeaturedColl();
                 myCart = (Cart)Session["cart"];
