@@ -17,7 +17,7 @@ namespace Book_Shop
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Bookshop ctx = new Bookshop();
+                Bookshop ctx = new Bookshop();
             if (tbx_Email.Text != "")
             {
                 bool isFound = false;
@@ -39,8 +39,6 @@ namespace Book_Shop
                 }
                 else
                 {
-                    tbx_Email.Text = "";
-                    tbx_Username.Text = "";
                     lbl_Status.Text = "Account successfully created, please log in";
                     User u = new User();
                     u.UserName = tbx_Username.Text;
@@ -48,18 +46,17 @@ namespace Book_Shop
                     u.EmailAddress = tbx_Email.Text;
                     u.Passcode = tbx_Password.Text;
                     u.DateJoined = DateTime.Today;
-                    u.Title = "";
-                    u.LastName = "";
-                    u.FirstName = "";
-                    u.ShippingAddress = "";
                     ctx.Users.Add(u);
                     ctx.SaveChanges();
+                    tbx_Email.Text = "";
+                    tbx_Username.Text = "";
                 }
             }
             else
             {
                 lbl_Status.Text = "Please fill email address";
             }
+            
         }
 
         protected void btn_Cancel_Click(object sender, EventArgs e)
