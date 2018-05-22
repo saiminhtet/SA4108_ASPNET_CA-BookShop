@@ -26,7 +26,7 @@ namespace Book_Shop
                 btnUser.Visible = false;
                 bkColl = GetFeaturedColl();
                 DisplayFeaturedColl();
-                myCart = new Cart();
+                myCart = (Cart)Session["cart"];
             }
         }
 
