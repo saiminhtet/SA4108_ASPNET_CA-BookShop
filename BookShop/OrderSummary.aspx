@@ -1,12 +1,37 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OrderSummary.aspx.cs" Inherits="Book_Shop.OrderSummary" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <br />
+    <h3>Shipping Information</h3>
+    <table>
+        <tr>
+            <td><asp:Label ID="Label1" runat="server" Text="Shipping Address: "></asp:Label></td>
+            <td><asp:Label ID="lblshippingaddress" runat="server" Text=""></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label2" runat="server" Text="Customer Name: "></asp:Label></td>
+            <td><asp:Label ID="lblcustname" runat="server" Text=""></asp:Label></td>
+            
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label3" runat="server" Text="Email Address: "></asp:Label></td>
+            <td><asp:Label ID="lblemail" runat="server" Text=""></asp:Label></td>
+        </tr>
+        <tr>
+            <td><asp:Label ID="Label4" runat="server" Text="Contact: "></asp:Label></td>
+            <td><asp:Label ID="Label5" runat="server" Text="+658755443"></asp:Label></td>
+        </tr>
+
+    </table>
+    
+    <hr />
+    <h3>Order Items</h3>
     <asp:ListView runat="server" ID="lvorder">
         <LayoutTemplate>
             <table class="table text-info">
                 <thead>
                     <th class="active">Book ID</th>
                     <th class="active">Book Title</th>
-                    <th class="active">Qyantity</th>
+                    <th class="active">Quantity</th>
                     <th class="active">Unit Price</th>
 
                     <tr>
@@ -42,6 +67,6 @@
     </asp:ListView>
     <asp:Label ID="Total" runat="server" Text=""></asp:Label>
     <hr />
-    <asp:LinkButton ID="btn_checkout" CssClass="btn btn-primary btn-lg " runat="server" data-toggle="modal" data-target="#myModal">
-      <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> PROCEED TO CHECKOUT</asp:LinkButton><br />
+    <asp:LinkButton ID="btn_order" CssClass="btn btn-primary btn-lg " runat="server">
+      <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> ORDER</asp:LinkButton><br />
 </asp:Content>
