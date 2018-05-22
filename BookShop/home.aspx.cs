@@ -11,9 +11,7 @@ namespace Book_Shop
 {
     public partial class home : System.Web.UI.Page
     {
-        string userName;
         string selectedISBN;
-        string searchText;
         static Cart myCart;
         const string bkCoverDir = "~/images/";
 

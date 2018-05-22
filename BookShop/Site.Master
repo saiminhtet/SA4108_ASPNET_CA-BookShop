@@ -33,6 +33,7 @@
             width:100%;
             align-content:center;
             box-shadow: 0px 4px 10px -2px hsl(0, 0%, 80%);
+            background-color:white;
         }
         .td1 {
             width:385px;
@@ -84,6 +85,7 @@
                     <asp:Button ID="btnSignUp" class="btn-right" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CausesValidation="False" />
                     <asp:Button ID="btnLogIn" class="btn-right" runat="server" Text="Log In" OnClick="btnLogIn_Click" CausesValidation="False" />
                     <asp:Button ID="btnUser" class="btn-right" runat="server" Text="Account" OnClick="btnUser_Click" CausesValidation="False"/>
+                    <asp:Button ID="btnLogOut" class="btn-right" runat="server" Text="Log Out"  CausesValidation="False" OnClick="btnLogOut_Click" />
                 </td>
             </tr>
         </table>

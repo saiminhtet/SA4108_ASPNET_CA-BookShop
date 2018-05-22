@@ -7,21 +7,13 @@
     Inherits="Book_Shop.home" %>
 
 <asp:Content ID="imageBanner" ContentPlaceHolderID="ImageBanner" runat="server">
-    <style type="text/css">
-        #imageBanner {
-            text-align:center; 
-            width:100%; 
-            margin-left:auto; 
-            margin-right:auto; 
-        }    
-        #imgBanner {
+    <style type="text/css"> 
+        .full-width {
             width:100%;
-            clip: rect(400px, 0, 400px, 0);
             box-shadow: 0px 2px 8px 0px hsl(0, 0%, 50%);
         }
     </style>
-    <br />
-    <asp:Image ID="imgBanner" runat="server" ImageUrl="~/resources/image/knowledge-is-power-banner.jpg"/>
+        <asp:Image ID="imgBanner" runat="server" ImageUrl="~/resources/image/knowledge-is-power-banner.jpg" cssclass="full-width"/>
 </asp:Content>
 
 <asp:Content ID="tblFeaturedCollection" ContentPlaceHolderID="MainContent" runat="server">
