@@ -22,7 +22,7 @@ namespace Book_Shop
         protected void Session_Start(object sender, EventArgs e)
         {
             // Session Variables Initialization
-            Session["eadd"] = "htetsaimin@gmial.com";
+            Session["eadd"] = "";
             Session["cart"] = new Cart();
 
         }
