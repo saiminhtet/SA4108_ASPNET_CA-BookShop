@@ -44,7 +44,7 @@ namespace Book_Shop
             {
                 tbx_EmailAdress.Text = "";
                 tbx_Password.Text = "";
-                lbl_Status.Text = "Wrong email address or password, please try again";
+                NotifyUserError("Wrong email address or password, please try again", "Error");
             }
             else
             {
@@ -54,7 +54,7 @@ namespace Book_Shop
                 {
                     tbx_EmailAdress.Text = "";
                     tbx_Password.Text = "";
-                    lbl_Status.Text = "Wrong email address or password, please try again";
+                    NotifyUserError("Wrong email address or password, please try again", "Error");
                 }
                 else
                 {
@@ -64,6 +64,13 @@ namespace Book_Shop
                         Response.Redirect("Home.aspx");
                 }
             }
+        }
+        protected void NotifyUserError(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.error('" + msg + "', '" + type + "')", true);
         }
     }
 }
