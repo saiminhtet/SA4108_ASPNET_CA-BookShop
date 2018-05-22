@@ -9,6 +9,14 @@
 </body>
 </html>--%>
     <div>
+        <br />
+        <br />
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><br /><br />
+        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>&nbsp
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br /><br />
+        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>&nbsp
+        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox><br /><br />
+
         <asp:Login ID="lgn" runat="server" OnAuthenticate="Login11_Authenticate">
             <LayoutTemplate>
                 <table cellpadding="1" cellspacing="0" style="border-collapse:collapse;">
