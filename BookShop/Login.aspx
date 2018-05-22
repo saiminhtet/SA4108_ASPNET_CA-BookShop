@@ -5,13 +5,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!DOCTYPE html>
 
-    <%--<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">--%>
+    <%-- </form>
+</body>
+</html>--%>
     <div>
+        <asp:Label ID="lbl_Title" runat="server" Text="Please login with your email address"></asp:Label>
         <asp:Login ID="lgn" runat="server" OnAuthenticate="Login11_Authenticate"></asp:Login>
     </div>
     <asp:Button ID="btn_RecoverPassword" runat="server" Text="Recover Password" Width="147px" OnClick="btn_RecoverPassword_Click" />&nbsp

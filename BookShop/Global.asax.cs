@@ -25,7 +25,7 @@ namespace Book_Shop
         protected void Session_Start(object sender, EventArgs e)
         {
             // Session Variables Initialization
-            Session["UserID"] = 0;
+            Session["eadd"] = "";
             Session["bkTitle"] = "";
             Session["bkCat"] = "";
             Session["bkAuthor"] = "";
