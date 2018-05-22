@@ -13,15 +13,6 @@ namespace Book_Shop {
     public partial class Login1 {
         
         /// <summary>
-        /// lbl_Title control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Title;
-        
-        /// <summary>
         /// lgn control.
         /// </summary>
         /// <remarks>

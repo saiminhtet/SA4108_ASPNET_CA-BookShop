@@ -3,14 +3,9 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="Book_Shop.ChangePassword" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%--<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">--%>
+    <%--   </form>
+</body>
+</html>--%>
     <div>
         <br />
         <br />
@@ -29,6 +24,9 @@
         <br />
         <br />
         <asp:Button ID="btn_Change" runat="server" Text="Change Password" OnClick="btn_Change_Click" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 500px" />&nbsp<asp:Button ID="btn_Cancel" runat="server" Text="Cancel" OnClick="btn_Cancel_Click" Font-Names="Arial" Font-Size="Medium" />
+        <br />
+        <br />
+        <asp:Label ID="lbl_Status" runat="server" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 500px"></asp:Label>
     </div>
     <%--   </form>
 </body>

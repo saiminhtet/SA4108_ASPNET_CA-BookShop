@@ -30,13 +30,16 @@ namespace Book_Shop
                         isFound = true;
                     }
                 }
-                if (isFound == false)
+                if (isFound == true)
                 {
+                    lbl_Status.Text = "Duplicate email address, please enter another one";
                     tbx_Email.Text = "";
-                    Response.Write("<script>alert('Duplicate email address, please enter another one');</script>");
+                    //Response.Write("<script>alert('Duplicate email address, please enter another one');</script>");
+                    isFound = false;
                 }
                 else
                 {
+                    lbl_Status.Text = "Account successfully created, please log in";
                     User u = new User();
                     u.UserName = tbx_Username.Text;
                     u.UserType = "RUser";
@@ -45,13 +48,16 @@ namespace Book_Shop
                     u.DateJoined = DateTime.Today;
                     ctx.Users.Add(u);
                     ctx.SaveChanges();
-
-                    Response.Redirect("Login.aspx");
                 }
             }
         }
 
         protected void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
+
+        protected void btn_GoToLogin_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
         }
