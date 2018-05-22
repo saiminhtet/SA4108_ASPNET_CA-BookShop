@@ -36,6 +36,7 @@ namespace Book_Shop
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
             CartItem c = new CartItem(bkID, title, 1, price);
             myCart.AddToCart(c);
+            Session["cart"] = myCart;
         }
 
         protected void f2BtnBuy_Click(object sender, EventArgs e)
@@ -46,6 +47,7 @@ namespace Book_Shop
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
             CartItem c = new CartItem(bkID, title, 1, price);
             myCart.AddToCart(c);
+            Session["cart"] = myCart;
         }
 
         protected void f3BtnBuy_Click(object sender, EventArgs e)
@@ -56,6 +58,7 @@ namespace Book_Shop
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
             CartItem c = new CartItem(bkID, title, 1, price);
             myCart.AddToCart(c);
+            Session["cart"] = myCart;
         }
 
         protected void f4BtnBuy_Click(object sender, EventArgs e)
@@ -66,6 +69,7 @@ namespace Book_Shop
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
             CartItem c = new CartItem(bkID, title, 1, price);
             myCart.AddToCart(c);
+            Session["cart"] = myCart;
         }
 
         protected void f5BtnBuy_Click(object sender, EventArgs e)
@@ -76,6 +80,7 @@ namespace Book_Shop
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
             CartItem c = new CartItem(bkID, title, 1, price);
             myCart.AddToCart(c);
+            Session["cart"] = myCart;
         }
 
         protected void f6BtnBuy_Click(object sender, EventArgs e)
@@ -86,6 +91,7 @@ namespace Book_Shop
             double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
             CartItem c = new CartItem(bkID, title, 1, price);
             myCart.AddToCart(c);
+            Session["cart"] = myCart;
         }
 
         public List<Book> GetFeaturedColl()
@@ -211,7 +217,5 @@ namespace Book_Shop
             selectedISBN = f6ISBN.Text;
             Response.Redirect("~/details?id=" + selectedISBN);
         }
-
-        
     }
 }

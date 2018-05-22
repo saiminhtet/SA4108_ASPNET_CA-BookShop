@@ -27,16 +27,15 @@
         .f1 {
             min-width:100px;
             max-width:150px;
-            padding: 0 20px 0 20px;
+            margin-left:10px;
+            margin-right:10px;
             vertical-align:top;
             text-align:center;
+            align-content:center;
         }
         .featuredImg {
-            min-width:100px;
+            min-width:80px;
             max-width:150px;
-            
-            margin-left:auto;
-            margin-right:auto;
         }
         .featuredTitle {
             font-family:'Arial Narrow';
@@ -59,6 +58,17 @@
             font-weight: 800;
             font-size:14pt;
             color:#4286f5;
+        }
+        .footer-cell {
+            width:300px; 
+            text-align: left;
+        }
+        .footer-header {
+            font-family:'SF Display';
+            font-weight:800;
+            font-size:14pt;
+            text-align: left;
+            padding-bottom:10px;
         }
     </style>
     <br />
@@ -121,5 +131,82 @@
             </td>
         </tr>
     </table>
+    <br />
+    <br />
+    <div style="align-content:center; text-align:center;">
+        <table  style="margin-left:auto; margin-right:auto;">
+        <tr>
+            <td class="footer-header" colspan="3">
+                Done By: NUS ISS GDipSA46 Team 6
+            </td>
+        </tr>
+        <tr>
+            <td class="footer-cell">
+                Gao Yangyang
+            </td>
+            <td class="footer-cell">
+                A0180493B
+            </td>
+            <td class="footer-cell">
+                e0283979@u.nue.edu
+            </td>
+        </tr>
+        <tr>
+            <td class="footer-cell">
+                Hunasavally Virupaksha Dhanya
+            </td>
+            <td class="footer-cell">
+                A0180525J
+            </td>
+            <td class="footer-cell">
+                e0284011@u.nus.edu
+            </td>
+        </tr>
+        <tr>
+            <td class="footer-cell">
+                Jerome Kwek Li Ming
+            </td>
+            <td class="footer-cell">
+                A0180495X
+            </td>
+            <td class="footer-cell">
+                e0283981@u.nus.edu
+            </td>
+        </tr>
+        <tr>
+            <td class="footer-cell">
+                Sai Min Htet
+            </td>
+            <td class="footer-cell">
+                A0180545E
+            </td>
+            <td class="footer-cell">
+                e0284031@u.nus.edu
+            </td>
+        </tr>
+        <tr>
+            <td class="footer-cell">
+                Tang Shenqi
+            </td>
+            <td class="footer-cell">
+                A0114523U
+            </td>
+            <td class="footer-cell">
+                e0287130@u.nus.edu
+            </td>
+        </tr>
+        <tr>
+            <td class="footer-cell">
+                Teong Hanlong
+            </td>
+            <td class="footer-cell">
+                A0055905A
+            </td>
+            <td class="footer-cell">
+                teong@u.nus.edu
+            </td>
+        </tr>
+    </table>
+    </div>
     </div>
 </asp:Content>

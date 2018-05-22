@@ -27,7 +27,13 @@ namespace Book_Shop
             {
                 if (itm != null)
                 {
-                    itmColl.Add(itm);
+                    bool IsExists = false;
+                    foreach (var i in itmColl)
+                    {
+                        if (i.bkID == itm.bkID)
+                        { i.orderQty += 1; IsExists = true; break; }
+                    }
+                    if (!IsExists) itmColl.Add(itm);
                     return AddToCartOK;
                 }
                 else
