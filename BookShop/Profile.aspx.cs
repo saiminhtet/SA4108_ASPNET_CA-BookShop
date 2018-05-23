@@ -36,6 +36,10 @@ namespace Book_Shop
                 {
                     NotifyUser("Your profile is updated", "Successful");
                 }
+                if ((string)Session["passwordChanged"] == "true")
+                {
+                    NotifyUser("Password successfully changed", "Successful");
+                }
             }
         }
 
@@ -52,7 +56,6 @@ namespace Book_Shop
 
             ctx.SaveChanges();
             Session["profileChanged"] = "true";
-            NotifyUser("Your profile is updated", "Successful");
             Response.Redirect("Profile.aspx");
         }
 

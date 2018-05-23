@@ -39,6 +39,7 @@ namespace Book_Shop
                     NotifyUser("Password successfully changed", "Successful");
                     u.Passcode = tbx_NewPassword.Text;
                     ctx.SaveChanges();
+                    Session["passwordChanged"] = "true";
                     Response.Redirect("Profile.aspx");
                 }
             }
