@@ -15,17 +15,16 @@ namespace Book_Shop
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            myCart = (Cart)Session["cart"];
+            string isbn = Request.QueryString["isbn"];
+            Bookshop ctx = new Bookshop();
+            if (isbn == null)
+                b = ctx.Books.ToList().First();
+            else
+                b = ctx.Books.Where(x => x.ISBN == isbn).First();
+
             if (!IsPostBack)
             {
-                myCart = (Cart)Session["cart"];
-                string isbn = Request.QueryString["isbn"];
-
-                Bookshop ctx = new Bookshop();
-                if (isbn == null)
-                    b = ctx.Books.ToList().First();
-                else
-                    b = ctx.Books.Where(x => x.ISBN == isbn).First();
-
                 //Book image
                 imgBook.ImageUrl = "~/images/" + b.ISBN + ".jpg";
                 //Book title
@@ -168,6 +167,13 @@ namespace Book_Shop
                 "toastr_message",
                 "toastr.success('" + msg + "', '" + type + "')", true);
         }
+        protected void NotifyUserError(string msg, string type)
+        {
+            Page.ClientScript.RegisterStartupScript
+                (this.GetType(),
+                "toastr_message",
+                "toastr.error('" + msg + "', '" + type + "')", true);
+        }
         protected void AddItem(int bkID, string title, int qty, double price)
         {
             CartItem c = new CartItem(bkID, title, qty, price);
@@ -175,7 +181,7 @@ namespace Book_Shop
             if (temp == Cart.AddToCartOK)
                 NotifyUser("Added item to cart successfully", "Success");
             else if (temp == Cart.AddToCartNG)
-                NotifyUser("Unable to add item to cart", "Error");
+                NotifyUserError("Unable to add item to cart", "Error");
             Session["cart"] = myCart;
         }
         public int GetBkID(string isbn)
@@ -184,12 +190,34 @@ namespace Book_Shop
         }
         protected void btnAddCart_Click(object sender, EventArgs e)
         {
-            string strPrice = f4Price.Text;
-            int bkID = GetBkID(f4ISBN.Text);
-            string title = f4Title.Text;
-            double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
-            int qty = Convert.ToInt32(txbCopies.Text);
-            AddItem(bkID, title, qty, price);
+            if (txbCopies.Text != "")
+            {
+                int number;
+                if (Int32.TryParse(txbCopies.Text, out number))
+                {
+                    if (number > b.Stock)
+                    {
+                        NotifyUserError("You have exceeded the maximum number of stock", "Error");
+                    }
+                    else
+                    {
+                        string strPrice = f4Price.Text;
+                        int bkID = GetBkID(f4ISBN.Text);
+                        string title = f4Title.Text;
+                        double price = Double.Parse(strPrice.Substring(1, strPrice.Length - 1));
+                        int qty = Convert.ToInt32(txbCopies.Text);
+                        AddItem(bkID, title, qty, price);
+                    }
+                }
+                else
+                {
+                        NotifyUserError("Please enter an integer number", "Error");
+                }
+            }
+            else
+            {
+                NotifyUserError("Please input the quantity you want to add to cart", "Error");
+            }
 
             ////Limit the copy number a customer can buy according to the stock
             //string bkID = Request.QueryString["BookID"];
@@ -218,6 +246,5 @@ namespace Book_Shop
             //}
 
         }
-
     }
 }
