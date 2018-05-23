@@ -11,14 +11,15 @@ namespace Book_Shop
     {
         static Cart myCart;
         string searchText;
+        string emailAddress;
         Book_Shop.Models.Bookshop ctx = new Book_Shop.Models.Bookshop();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             myCart = (Cart)Session["cart"];
+            emailAddress = (string)Session["eadd"];
             if (!IsPostBack)
             {
-                string emailAddress = (string)Session["eadd"];
                 if (emailAddress == "")
                 {
                     btnLogOut.Visible = false;
@@ -32,11 +33,14 @@ namespace Book_Shop
                     btnUser.Visible = true;
                     btnLogIn.Visible = false;
                     btnSignUp.Visible = false;
-                    if (ctx.Users.ToList().Find(x => x.EmailAddress == emailAddress) != null)
-                        btnUser.Text = ctx.Users.ToList().Find(x => x.EmailAddress == emailAddress).UserName;
                 }
-                    
+
             }
+            if (emailAddress != "")
+            {
+                if (ctx.Users.ToList().Find(x => x.EmailAddress == emailAddress) != null)
+                    btnUser.Text = ctx.Users.ToList().Find(x => x.EmailAddress == emailAddress).UserName;
+            }   
         }
 
         protected void imgPowerSearch_Click(object sender, ImageClickEventArgs e)
@@ -76,6 +80,16 @@ namespace Book_Shop
             Session["eadd"] = ""; // Logs out user
             btnLogOut.Visible = false;
             Response.Redirect("~/Home");
+        }
+
+        public void UpdateUserName()
+        {
+            emailAddress = (string)Session["eadd"];
+            if (emailAddress != "")
+            {
+                if (ctx.Users.ToList().Find(x => x.EmailAddress == emailAddress) != null)
+                    btnUser.Text = ctx.Users.ToList().Find(x => x.EmailAddress == emailAddress).UserName;
+            }
         }
     }
 }

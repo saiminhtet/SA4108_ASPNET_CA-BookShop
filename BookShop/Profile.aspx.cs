@@ -31,6 +31,11 @@ namespace Book_Shop
                 lbl_EmailAddress.Text = u.EmailAddress;
                 tbx_ShippingAddress.Text = u.ShippingAddress;
                 tbx_UserName.Text = u.UserName;
+
+                if ((string)Session["profileChanged"] == "true")
+                {
+                    NotifyUser("Your profile is updated", "Successful");
+                }
             }
         }
 
@@ -46,7 +51,9 @@ namespace Book_Shop
             u.UserName = tbx_UserName.Text;
 
             ctx.SaveChanges();
+            Session["profileChanged"] = "true";
             NotifyUser("Your profile is updated", "Successful");
+            Response.Redirect("Profile.aspx");
         }
 
         protected void btn_ChangePassword_Click(object sender, EventArgs e)
