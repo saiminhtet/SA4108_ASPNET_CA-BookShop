@@ -1,6 +1,6 @@
 ﻿<%--<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="BookShop.ChangePassword" %>--%>
 
-<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="Book_Shop.ChangePassword" %>
+<%@ Page Title="Change Password" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="Book_Shop.ChangePassword" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <%--   </form>
@@ -12,7 +12,7 @@
         <asp:Label ID="Label1" runat="server" Text="Welcome, please change password" Font-Names="Arial" Font-Size="X-Large" Style="margin-left: 450px" Font-Bold="True"></asp:Label>
         <br />
         <br />
-        <asp:Label ID="lbl_Password" runat="server" Text="Password" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 450px"></asp:Label><asp:TextBox ID="tbx_Password" runat="server" Style="margin-left: 145px" Width="167px" Height="25px" TextMode="Password"></asp:TextBox>
+        <asp:Label ID="lbl_Password" runat="server" Text="Current Password" Font-Names="Arial" Font-Size="Medium" Style="margin-left: 450px"></asp:Label><asp:TextBox ID="tbx_Password" runat="server" Style="margin-left: 88px" Width="167px" Height="25px" TextMode="Password"></asp:TextBox>
         &nbsp<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbx_Password" ForeColor="Red" ErrorMessage="Please fill old password"></asp:RequiredFieldValidator>
         <br />
         <br />

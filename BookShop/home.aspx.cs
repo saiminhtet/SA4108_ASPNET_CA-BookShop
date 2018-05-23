@@ -101,11 +101,13 @@ namespace Book_Shop
 
         public List<Book> GetFeaturedColl()
         {
+            System.Diagnostics.Debug.WriteLine("new round");
             List<Book> bkColl = new List<Book>();
             Random r = new Random();
             int ind = (int)(r.NextDouble() * (ctx.Books.ToList().Count));
             if (ind == 0) ind += 1;
-            bkColl.Add(ctx.Books.ToList().Find(x => x.BookID == ind));
+            bkColl.Add(ctx.Books.ToList()[ind]);
+            System.Diagnostics.Debug.WriteLine("index: " + ind);
 
             bool repeatBool = false;
             int temp;
@@ -113,18 +115,24 @@ namespace Book_Shop
             while (!repeatBool && bkColl.Count < 6)
             {
                 temp = (int)(r.NextDouble() * (ctx.Books.ToList().Count));
+                System.Diagnostics.Debug.WriteLine("temp: " + temp);
                 if (temp == 0) temp += 1;
-                tempBk = ctx.Books.ToList().Find(x => x.BookID == temp);
-                for (int i = 0; i < bkColl.Count; i++)
+                if (ctx.Books.ToList()[temp] != null)
                 {
-                    if (tempBk.BookID == bkColl[i].BookID)
+                    tempBk = ctx.Books.ToList()[temp];
+
+                    for (int i = 0; i < bkColl.Count; i++)
                     {
-                        repeatBool = true;
-                        break;
+                        System.Diagnostics.Debug.WriteLine("check: " + bkColl[i].BookID);
+                        if (tempBk.BookID == bkColl[i].BookID)
+                        {
+                            repeatBool = true;
+                            break;
+                        }
                     }
+                    if (!repeatBool) bkColl.Add(tempBk);
+                    else repeatBool = false;
                 }
-                if (!repeatBool) bkColl.Add(tempBk);
-                else repeatBool = false;
             }
             return bkColl;
         }

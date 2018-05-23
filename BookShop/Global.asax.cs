@@ -24,7 +24,7 @@ namespace Book_Shop
             // Session Variables Initialization
             Session["eadd"] = "";
             Session["cart"] = new Cart();
-
+            Session["lastPage"] = "";
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

@@ -79,7 +79,7 @@
         <tr>
             <td class="f1">
                 <asp:ImageButton ID="f1Img" class="featuredImg" runat="server" OnClick="f1Img_Click"/><br />
-                <a id="f1Link" href='<%= "~/details.aspx?isbn=" + f1ISBN.Text %>'><asp:Label ID="f1Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
+                <a id="f1Link" href='<%= "details.aspx?isbn=" + f1ISBN.Text %>'><asp:Label ID="f1Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
                 <asp:Label ID="f1Author" class="featuredAuthor" runat="server"></asp:Label><br />
                 <asp:Label ID="f1Cat" class="featuredCat" runat="server"></asp:Label><br /><br />
                 <asp:Label ID="f1Price" class="featuredPrice" runat="server"></asp:Label><br />
@@ -88,7 +88,7 @@
             </td>
             <td class="f1">
                 <asp:ImageButton ID="f2Img" class="featuredImg" runat="server" OnClick="f2Img_Click"/><br />
-                <a id="f2Link" href='<%= "~/details.aspx?isbn=" + f2ISBN.Text %>'><asp:Label ID="f2Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
+                <a id="f2Link" href='<%= "details.aspx?isbn=" + f2ISBN.Text %>'><asp:Label ID="f2Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
                 <asp:Label ID="f2Author" class="featuredAuthor" runat="server"></asp:Label><br />
                 <asp:Label ID="f2Cat" class="featuredCat" runat="server"></asp:Label><br /><br />
                 <asp:Label ID="f2Price" class="featuredPrice" runat="server"></asp:Label><br />
@@ -97,7 +97,7 @@
             </td>
             <td class="f1">
                 <asp:ImageButton ID="f3Img" class="featuredImg" runat="server" OnClick="f3Img_Click"/><br />
-                <a id="f3Link" href='<%= "~/details.aspx?isbn=" + f3ISBN.Text %>'><asp:Label ID="f3Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
+                <a id="f3Link" href='<%= "details.aspx?isbn=" + f3ISBN.Text %>'><asp:Label ID="f3Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
                 <asp:Label ID="f3Author" class="featuredAuthor" runat="server"></asp:Label><br />
                 <asp:Label ID="f3Cat" class="featuredCat" runat="server"></asp:Label><br /><br />
                 <asp:Label ID="f3Price" class="featuredPrice" runat="server"></asp:Label><br />
@@ -106,7 +106,7 @@
             </td>
             <td class="f1">
                 <asp:ImageButton ID="f4Img" class="featuredImg" runat="server" OnClick="f4Img_Click"/><br />
-                <a id="f4Link" href='<%= "~/details.aspx?isbn=" + f4ISBN.Text %>'><asp:Label ID="f4Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
+                <a id="f4Link" href='<%= "details.aspx?isbn=" + f4ISBN.Text %>'><asp:Label ID="f4Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
                 <asp:Label ID="f4Author" class="featuredAuthor" runat="server"></asp:Label><br />
                 <asp:Label ID="f4Cat" class="featuredCat" runat="server"></asp:Label><br /><br />
                 <asp:Label ID="f4Price" class="featuredPrice" runat="server"></asp:Label><br />
@@ -115,7 +115,7 @@
             </td>
             <td class="f1">
                 <asp:ImageButton ID="f5Img" class="featuredImg" runat="server" OnClick="f5Img_Click"/><br />
-                <a id="f5Link" href='<%= "~/details.aspx?isbn=" + f5ISBN.Text %>'><asp:Label ID="f5Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
+                <a id="f5Link" href='<%= "details.aspx?isbn=" + f5ISBN.Text %>'><asp:Label ID="f5Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
                 <asp:Label ID="f5Author" class="featuredAuthor" runat="server"></asp:Label><br />
                 <asp:Label ID="f5Cat" class="featuredCat" runat="server"></asp:Label><br /><br />
                 <asp:Label ID="f5Price" class="featuredPrice" runat="server"></asp:Label><br />
@@ -124,7 +124,7 @@
             </td>
             <td class="f1">
                 <asp:ImageButton ID="f6Img" class="featuredImg" runat="server" OnClick="f6Img_Click"/><br />
-                <a id="f6Link" href='<%= "~/details.aspx?isbn=" + f6ISBN.Text %>'><asp:Label ID="f6Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
+                <a id="f6Link" href='<%= "details.aspx?isbn=" + f6ISBN.Text %>'><asp:Label ID="f6Title" class="featuredTitle" runat="server"></asp:Label><br /></a>
                 <asp:Label ID="f6Author" class="featuredAuthor" runat="server"></asp:Label><br />
                 <asp:Label ID="f6Cat" class="featuredCat" runat="server"></asp:Label><br /><br />
                 <asp:Label ID="f6Price" class="featuredPrice" runat="server"></asp:Label><br />

@@ -61,7 +61,16 @@ namespace Book_Shop
                     if (u.Passcode == tbx_Password.Text && u.UserType == "Owner")
                         Response.Redirect("Dashboard.aspx");
                     else if (u.Passcode == tbx_Password.Text && u.UserType == "RUser")
-                        Response.Redirect("Home.aspx");
+                    {
+                        if ((string)Session["lastPage"] != "")
+                        {
+                            Response.Redirect((string)Session["lastPage"]);
+                        }
+                        else
+                        {
+                            Response.Redirect("Home.aspx");
+                        }
+                    }
                 }
             }
         }

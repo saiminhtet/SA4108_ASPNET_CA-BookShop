@@ -21,11 +21,19 @@ namespace Book_Shop
                 Bookshop ctx = new Bookshop();
                 useremail = Session["eadd"].ToString();
                 if (useremail == null) Response.Redirect("~/Login.aspx");
-                userid = ctx.Users.ToList().Find(x => x.EmailAddress == useremail).UserID;
-                CheckExistingCredit(userid);
-                DDL_Month_Year_Bind();
-                myCart = (Cart)Session["cart"];
-                BindGrid();
+                if (ctx.Users.ToList().Find(x => x.EmailAddress == useremail) != null)
+                {
+                    userid = ctx.Users.ToList().Find(x => x.EmailAddress == useremail).UserID;
+                    CheckExistingCredit(userid);
+                    DDL_Month_Year_Bind();
+                    myCart = (Cart)Session["cart"];
+                    BindGrid();
+                }
+                else
+                {
+                    Response.Redirect("~/Login.aspx");
+                    //Session["lastPage"] = this.Page.Title;
+                }
             }
 
         }

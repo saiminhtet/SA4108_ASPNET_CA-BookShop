@@ -69,7 +69,7 @@ namespace Book_Shop
             Random r = new Random();
             int ind = (int)(r.NextDouble() * (ctx.Books.ToList().Count));
             if (ind == 0) ind += 1;
-            bkColl.Add(ctx.Books.ToList().Find(x => x.BookID == ind));
+            bkColl.Add(ctx.Books.ToList()[ind]);
 
             bool repeatBool = false;
             int temp;
@@ -78,7 +78,7 @@ namespace Book_Shop
             {
                 temp = (int)(r.NextDouble() * (ctx.Books.ToList().Count));
                 if (temp == 0) temp += 1;
-                tempBk = ctx.Books.ToList().Find(x => x.BookID == temp);
+                tempBk = ctx.Books.ToList()[temp];
                 for (int i = 0; i < bkColl.Count; i++)
                 {
                     if (tempBk.BookID == bkColl[i].BookID)

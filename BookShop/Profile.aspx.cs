@@ -60,5 +60,11 @@ namespace Book_Shop
                 "toastr_message",
                 "toastr.success('" + msg + "', '" + type + "')", true);
         }
+
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(5000);
+            Response.Redirect("Home.aspx");
+        }
     }
 }
