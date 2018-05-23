@@ -10,6 +10,7 @@ namespace Book_Shop.Models
     public partial class Promotion
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column(Order = 0)]
         public int PromoID { get; set; }
 

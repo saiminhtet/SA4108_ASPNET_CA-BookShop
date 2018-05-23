@@ -132,20 +132,24 @@ namespace Book_Shop
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            List<PromoInfo> pList = new List<PromoInfo>();
             foreach (var i in ListBox1.GetSelectedIndices())
             {
                 string Scope = RadioButtonList1.SelectedValue;
                 string PromotionalItem = ListBox1.Items[i].ToString();
                 if (Scope == "Storewide") PromotionalItem = "N/A";
-                string StartDate = TextBox17.Text;
-                string EndDate = TextBox18.Text;
-                string Discount = TextBox20.Text;
-                PromoInfo p = new PromoInfo(Scope, PromotionalItem, StartDate, EndDate, Discount);
-                pList.Add(p);
+                DateTime StartDate = Convert.ToDateTime(TextBox17.Text);
+                DateTime EndDate = Convert.ToDateTime(TextBox18.Text);
+                int Discount = Convert.ToInt32(TextBox20.Text);
+                BusinessLogic.adddiscount(Scope, PromotionalItem, StartDate, EndDate, Discount);
+
+                var promotionlist = BusinessLogic.GetPromotionbyScope(Scope);
+
+                GridView2.DataSource = promotionlist;
+                GridView2.DataBind();
+               
             }
-            GridView2.DataSource = pList;
-            GridView2.DataBind();
+
+
         }
 
         protected void Add_Btn_Click(object sender, EventArgs e)
