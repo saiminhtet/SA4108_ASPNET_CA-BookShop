@@ -87,23 +87,34 @@ namespace Book_Shop
         }
         protected void btn_purchase_Click(object sender, EventArgs e)
         {
-            string name = txt_holdername.Text;
-            string cardno = txt_card_no.Text;
-            int month = Int16.Parse(ddlexpmonth.SelectedValue);
-            int year = Int16.Parse(ddlexpyear.SelectedValue);
-            int cvc = Int16.Parse(txt_cvc.Text);
-            try
+            bool cvcIsInt = false;
+            int cvc;
+            cvcIsInt = Int32.TryParse(txt_cvc.Text, out cvc);
+            if (cvcIsInt)
             {
-                CheckOutProcess.AddCardInfo(userid, name, cardno, month, year, cvc);
-                ClearText();
+                string name = txt_holdername.Text;
+                string cardno = txt_card_no.Text;
+                int month = Int16.Parse(ddlexpmonth.SelectedValue);
+                int year = Int16.Parse(ddlexpyear.SelectedValue);
+                cvc = Int16.Parse(txt_cvc.Text);
 
+                try
+                {
+                    CheckOutProcess.AddCardInfo(userid, name, cardno, month, year, cvc);
+                    ClearText();
+
+                }
+                catch (Exception exp)
+                {
+                    Response.Write(exp.ToString());
+                }
+                Session["cardno"] = cardno;
+                Response.Redirect("~/OrderSummary.aspx");
             }
-            catch (Exception exp)
+            else
             {
-                Response.Write(exp.ToString());
+                txt_cvc.Text = "";
             }
-            Session["cardno"] = cardno;
-            Response.Redirect("~/OrderSummary.aspx");
         }     
 
         protected void btnbtn_selectcard_Click(object sender, EventArgs e)
