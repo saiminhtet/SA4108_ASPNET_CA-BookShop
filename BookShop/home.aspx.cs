@@ -30,8 +30,8 @@ namespace Book_Shop
 
         protected void NotifyUser(string msg, string type)
         {
-            Page.ClientScript.RegisterStartupScript
-                (this.GetType(),
+            ScriptManager.RegisterStartupScript
+                (this.Page, this.GetType(),
                 "toastr_message",
                 "toastr.success('" + msg + "', '" + type + "')", true);
         }

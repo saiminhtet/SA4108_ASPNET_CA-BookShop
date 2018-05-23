@@ -80,10 +80,25 @@ namespace Book_Shop
                 {
                     FileUpload1.SaveAs(Server.MapPath("images/") + fName);
                     Response.Clear();
+                    try
+                    {
+                        BusinessLogic.AddNewBook(title, catid, isbn, author, stock, price);
+                    }
+                    catch (Exception exp)
+                    {
+                        Response.Write(exp.ToString());
+                    }
+                    List<Book> q = new List<Book>();
+                    q.Add(BusinessLogic.AllBooks().Last());
+                    GridView3.DataSource = q;
+                    GridView3.DataBind();
+                    bindgrid();
+                    GridView3.Visible = true;
+                    Response.Clear();
                 }
-                catch (Exception ex)
+                catch (Exception exp)
                 {
-                    return;
+                    Response.Write(exp.ToString());
                 }
             }
             else
@@ -91,19 +106,6 @@ namespace Book_Shop
                 Label12.Text = "Please Select your file";
                 Label12.ForeColor = System.Drawing.Color.Red;
             }
-            try
-            {
-                BusinessLogic.AddNewBook(title, catid, isbn, author, stock, price);
-            }
-            catch (Exception exp)
-            {
-                Response.Write(exp.ToString());
-            }
-            List<Book> q = new List<Book>();
-            q.Add(BusinessLogic.AllBooks().Last());
-            GridView3.DataSource = q;
-            GridView3.DataBind();
-            bindgrid();
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -175,6 +177,7 @@ namespace Book_Shop
         protected void MngBook_Btn_Click(object sender, EventArgs e)
         {
             GridView1.Visible = true;
+            GridView3.Visible = false;
             UpdatePanel1.Visible = false;
             UpdatePanel2.Visible = false;
             Button1.Visible = false;
@@ -183,6 +186,7 @@ namespace Book_Shop
         protected void MngPromo_Btn_Click(object sender, EventArgs e)
         {
             GridView1.Visible = false;
+            GridView3.Visible = false;
             UpdatePanel2.Visible = true;
             UpdatePanel1.Visible = false;
             Button1.Visible = false;
