@@ -15,10 +15,10 @@ namespace Book_Shop.Models
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CreditCard> CreditCards { get; set; }
+        public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Promotion> Promotions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -44,6 +44,14 @@ namespace Book_Shop.Models
 
             modelBuilder.Entity<CreditCard>()
                 .Property(e => e.CardNumber)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Promotion>()
+                .Property(e => e.Scope)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Promotion>()
+                .Property(e => e.PromoItem)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Transaction>()
@@ -112,14 +120,6 @@ namespace Book_Shop.Models
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Passcode)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Promotion>()
-                .Property(e => e.Scope)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Promotion>()
-                .Property(e => e.PromoItem)
                 .IsUnicode(false);
         }
     }

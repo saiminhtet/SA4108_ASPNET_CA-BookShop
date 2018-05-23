@@ -67,18 +67,31 @@ namespace Book_Shop
             }
         }
 
-        public static void adddiscount(int promoid, string promoitem, DateTime startdate, DateTime enddate, int discountamt)
+        public static void adddiscount(string scope, string promoitem, DateTime startdate, DateTime enddate, int discountamt)
         {
             using (Bookshop entities = new Bookshop())
             {
-                Promotion promotion = entities.Promotions.Where(x => x.PromoID == promoid).First<Promotion>();
-                promotion.PromoID = promoid;
-                promotion.PromoItem = promoitem;
-                promotion.StartDate = startdate;
-                promotion.EndDate = enddate;
-                promotion.DiscountAmt = discountamt;
+                Promotion promo = new Promotion
+                {
+                    PromoID = entities.Promotions.Count() > 0 ? entities.Promotions.Max(c => c.PromoID) + 1 : 1,
+                    Scope = scope,
+                    PromoItem = promoitem,
+                    StartDate = startdate,
+                    EndDate = enddate,
+                    DiscountAmt = discountamt,
+                };
+                entities.Promotions.Add(promo);
+                entities.SaveChanges();
             }
         
+        }
+
+        public static List<Promotion> GetPromotionbyScope(string scope)
+        {
+            using (Bookshop entities = new Bookshop())
+            {
+                return entities.Promotions.Where(x=>x.Scope == scope).ToList<Promotion>();
+            }
         }
     }
 }
