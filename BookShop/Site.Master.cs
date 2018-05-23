@@ -15,9 +15,9 @@ namespace Book_Shop
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            myCart = (Cart)Session["cart"];
             if (!IsPostBack)
             {
-                myCart = (Cart)Session["cart"];
                 string emailAddress = (string)Session["eadd"];
                 if (emailAddress == "")
                 {
