@@ -7,10 +7,12 @@
             <hgroup>
                 <h2><%: Page.Title %></h2>
             </hgroup>
+             
             <asp:UpdatePanel ID="UpdatePanel4" runat="server" ChildrenAsTriggers="true">
                 <ContentTemplate>
                     <asp:ListView ID="lvbooklist" runat="server"
                         DataKeyNames="BookID" GroupItemCount="4"
+                       
                         ItemType="Book_Shop.Models.BookList" SelectMethod="GetBooksList" OnItemCommand="lvbooklist_ItemCommand">
                         <EmptyDataTemplate>
                             <table>

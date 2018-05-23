@@ -11,12 +11,26 @@ namespace Book_Shop
     public partial class SearchResult : System.Web.UI.Page
     {
         static Cart myCart;
+        //static string search;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 myCart = (Cart)Session["cart"];
+                Session["searchstring"] = Request.QueryString["search"];
+
+                if ((string)Session["addok"] == "true")
+                {
+                    NotifyUser("Added item to cart successfully", "Success");
+                }
+                if ((string)Session["addng"] == "true")
+                {
+                    NotifyUser("Unable to add item to cart", "Error");
+                }
+
+
             }
+
         }
 
         public IQueryable<BookList> GetBooksList([QueryString("search")] string searchquery)
@@ -34,7 +48,7 @@ namespace Book_Shop
 
         protected void NotifyUser(string msg, string type)
         {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "toastr_message", "toastr.success(" + msg + ", " + type + " )", true);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "toastr_message", "toastr.success('" + msg + "', '" + type + "')", true);
         }
 
         protected void lvbooklist_ItemCommand(object sender, ListViewCommandEventArgs e)
@@ -50,18 +64,27 @@ namespace Book_Shop
                     string title = book.Title;
                     double price = Double.Parse(book.Price.ToString());
                     CartItem c = new CartItem(bookId, title, 1, price);
-                    string temp =myCart.AddToCart(c);                  
-                
-                    if (temp == Cart.AddToCartOK)
-                        NotifyUser("Added item to cart successfully", "Success");
-                    else if (temp == Cart.AddToCartNG)
-                        NotifyUser("Unable to add item to cart", "Error");
+                    string temp = myCart.AddToCart(c);
                     Session["cart"] = myCart;
+
+                    if (temp == Cart.AddToCartOK)
+                    {
+                        Session["addok"] = "true";
+                        Response.Redirect("~/SearchResult?search=" + (string)Session["searchstring"]);
+                    }
+                    //NotifyUser("Added item to cart successfully", "Success");
+                    else if (temp == Cart.AddToCartNG)
+                    {
+                        Session["addng"] = "true";
+                        Response.Redirect("~/SearchResult?search=" + (string)Session["searchstring"]);
+                    }
+                    //NotifyUser("Unable to add item to cart", "Error");
+
 
                 }
             }
         }
 
-       
+
     }
 }
