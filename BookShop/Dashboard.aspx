@@ -11,8 +11,8 @@
     <script>
         function getISBN() {
             var fileName = $("input[id*=FileUpload1]").val().replace(/C:\\fakepath\\/i, '');
-            alert(fileName);
-            document.getElementById('TextBox14').value = "you belong to us";
+            // alert(fileName);
+            // document.getElementById('TextBox14').value = fileName;
         }
     </script>
     <style type="text/css">
