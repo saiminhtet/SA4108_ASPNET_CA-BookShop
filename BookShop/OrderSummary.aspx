@@ -16,10 +16,10 @@
             <td><asp:Label ID="Label3" runat="server" Text="Email Address: "></asp:Label></td>
             <td><asp:Label ID="lblemail" runat="server" Text=""></asp:Label></td>
         </tr>
-        <tr>
+<%--        <tr>
             <td><asp:Label ID="Label4" runat="server" Text="Contact: "></asp:Label></td>
             <td><asp:Label ID="Label5" runat="server" Text="+658755443"></asp:Label></td>
-        </tr>
+        </tr>--%>
 
     </table>
     

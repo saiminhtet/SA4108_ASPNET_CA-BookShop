@@ -10,15 +10,16 @@ namespace Book_Shop
     public partial class OrderSummary : System.Web.UI.Page
     {
         static string useremail;
-        static int userid;
+        static User usr;
         static Cart myCart;
+        Bookshop ctx = new Bookshop();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                userid = 2;
-                Session["eadd"] = "234567@a.com";
-                useremail = Session["eadd"].ToString();                
+                useremail = Session["eadd"].ToString();
+                usr = ctx.Users.Where(x => x.EmailAddress == useremail).First();
                 myCart = (Cart)Session["cart"];
                 BindGrid();
                 AddShippinginfo(useremail);
@@ -34,10 +35,16 @@ namespace Book_Shop
         {
             using (Bookshop entities = new Bookshop())
             {
-                User userdetail = entities.Users.Where(u => u.EmailAddress == email).First<User>();
-                lblshippingaddress.Text = userdetail.ShippingAddress;
-                lblcustname.Text = userdetail.Title +"."+ userdetail.FirstName + userdetail.LastName;            
-                lblemail.Text = userdetail.EmailAddress;
+                if (usr.ShippingAddress == "")
+                {
+                    usr.ShippingAddress = "123 ISS NUS, Singapore 123456";
+                    usr.LastName = "user";
+                    usr.FirstName = "user";
+                    usr.Title = "Mr";
+                }
+                lblshippingaddress.Text = usr.ShippingAddress;
+                lblcustname.Text = usr.Title +"."+ usr.FirstName + usr.LastName;            
+                lblemail.Text = usr.EmailAddress;
             }            
             
         }
