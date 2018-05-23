@@ -13,6 +13,24 @@ namespace Book_Shop {
     public partial class session {
         
         /// <summary>
+        /// lbl_EmailAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_EmailAddress;
+        
+        /// <summary>
+        /// tbx_UserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbx_UserName;
+        
+        /// <summary>
         /// tbx_Title control.
         /// </summary>
         /// <remarks>
@@ -38,15 +56,6 @@ namespace Book_Shop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbx_LastName;
-        
-        /// <summary>
-        /// tbx_EmailAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbx_EmailAddress;
         
         /// <summary>
         /// tbx_ShippingAddress control.
@@ -83,14 +92,5 @@ namespace Book_Shop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnHome;
-        
-        /// <summary>
-        /// lbl_Status control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Status;
     }
 }

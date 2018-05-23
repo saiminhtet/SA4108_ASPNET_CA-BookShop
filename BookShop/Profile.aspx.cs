@@ -28,24 +28,25 @@ namespace Book_Shop
                 tbx_Title.Text = u.Title;
                 tbx_FirstName.Text = u.FirstName;
                 tbx_LastName.Text = u.LastName;
-                tbx_EmailAddress.Text = u.EmailAddress;
+                lbl_EmailAddress.Text = u.EmailAddress;
                 tbx_ShippingAddress.Text = u.ShippingAddress;
+                tbx_UserName.Text = u.UserName;
             }
         }
 
         protected void btn_Update_Click(object sender, EventArgs e)
         {
             Bookshop ctx = new Bookshop();
-            User u = ctx.Users.Where(x => x.EmailAddress == tbx_EmailAddress.Text).First();
+            User u = ctx.Users.Where(x => x.EmailAddress == lbl_EmailAddress.Text).First();
 
             u.Title = tbx_Title.Text;
             u.FirstName = tbx_FirstName.Text;
             u.LastName = tbx_LastName.Text;
             u.ShippingAddress = tbx_ShippingAddress.Text;
+            u.UserName = tbx_UserName.Text;
 
             ctx.SaveChanges();
             NotifyUser("Your profile is updated", "Successful");
-            lbl_Status.Text = "Your profile is updated";
         }
 
         protected void btn_ChangePassword_Click(object sender, EventArgs e)
