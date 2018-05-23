@@ -7,6 +7,14 @@
     Inherits="Book_Shop.Dashboard" %>
 
 <asp:Content ID="ownerDashboard" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function getISBN() {
+            var fileName = $("input[id*=FileUpload1]").val().replace(/C:\\fakepath\\/i, '');
+            alert(fileName);
+            document.getElementById('TextBox14').value = "you belong to us";
+        }
+    </script>
     <style type="text/css">
         .auto-style1 {
             text-align: center;
@@ -76,7 +84,7 @@
                         </tr>
                     <tr>
                         <td class="auto-style57">
-                            <asp:FileUpload ID="FileUpload1" runat="server" Width="225px" cssclass="j1"/>
+                            <asp:FileUpload ID="FileUpload1" runat="server" Width="225px" cssclass="j1" onChange="getISBN()"/>
                         </td>
                         <td class="auto-style57">
                             <asp:TextBox ID="TextBox12" runat="server" placeholder="Enter a (string)" cssclass="j1"></asp:TextBox>
