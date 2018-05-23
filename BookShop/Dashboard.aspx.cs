@@ -83,10 +83,12 @@ namespace Book_Shop
                     try
                     {
                         BusinessLogic.AddNewBook(title, catid, isbn, author, stock, price);
+                        Response.Clear();
                     }
                     catch (Exception exp)
                     {
                         Response.Write(exp.ToString());
+                        Response.Clear();
                     }
                     List<Book> q = new List<Book>();
                     q.Add(BusinessLogic.AllBooks().Last());
@@ -99,13 +101,16 @@ namespace Book_Shop
                 catch (Exception exp)
                 {
                     Response.Write(exp.ToString());
+                    Response.Clear();
                 }
             }
             else
             {
                 Label12.Text = "Please Select your file";
                 Label12.ForeColor = System.Drawing.Color.Red;
+                Response.Clear();
             }
+            Response.Clear();
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
