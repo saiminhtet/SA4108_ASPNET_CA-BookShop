@@ -79,7 +79,7 @@
                             <asp:Label ID="Label14" runat="server" Text="CategoryID:"></asp:Label>
                         </td>
                         <td class="auto-style57">
-                            <asp:Label ID="Label15" runat="server" Text="ISBN:"></asp:Label>
+                            <asp:Label ID="Label15" runat="server" Text="ISBN:" Visible="False"></asp:Label>
                         </td>
                         </tr>
                     <tr>
@@ -93,7 +93,7 @@
                             <asp:TextBox ID="TextBox13" runat="server" placeholder="Enter a (int)" cssclass="j1"></asp:TextBox>
                         </td>
                         <td class="auto-style57">
-                            <asp:TextBox ID="TextBox14" runat="server" placeholder="Enter a (int)" cssclass="j1"></asp:TextBox>
+                            <asp:TextBox ID="TextBox14" runat="server" placeholder="Enter a (int)" cssclass="j1" Visible="False"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -125,16 +125,19 @@
                             <asp:TextBox ID="TextBox21" runat="server" placeholder="Enter a (decimal)" cssclass="j1"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Button ID="Button1" runat="server" Height="30px" OnClick="Button1_Click" Text="Add Book" Width="120px" />
+                            
                         </td>
                     </tr>
-                </table>
+                </table> 
+                <br /><br />
                 <div class="auto-style1">
                     <asp:GridView ID="GridView3" runat="server" Width="100%">
                     </asp:GridView>
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+            <br /><br />
+        <asp:Button ID="Button1" runat="server" Height="30px" OnClick="Button1_Click" Text="Add Book" Width="120px" style="margin-left:0px;"/>
             </div>
         <div class="auto-style1">
                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDeleting="OnRowDeleting" OnRowEditing="OnRowEditing" OnRowCancelingEdit="

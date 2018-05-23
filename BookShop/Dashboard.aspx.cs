@@ -19,6 +19,7 @@ namespace Book_Shop
                 UpdatePanel2.Visible = false;
                 GridView1.Visible = false;
                 bindgrid();
+                Button1.Visible = false;
             }
         }
 
@@ -65,7 +66,9 @@ namespace Book_Shop
         {
             string title = TextBox12.Text;
             int catid = Convert.ToInt32(TextBox13.Text);
-            string isbn = TextBox14.Text;
+            string fName = FileUpload1.FileName;
+            string isbn = "NA";
+            if (fName != null) isbn = fName.Substring(0,fName.Length - 4); // TextBox14.Text;
             string author = TextBox15.Text;
             int stock = Convert.ToInt32(TextBox16.Text);
             decimal price = Convert.ToDecimal(TextBox21.Text);
@@ -73,6 +76,15 @@ namespace Book_Shop
             {
                 Label12.Text = "Image Uploaded";
                 Label12.ForeColor = System.Drawing.Color.ForestGreen;
+                try
+                {
+                    FileUpload1.SaveAs(Server.MapPath("images/") + fName);
+                    Response.Clear();
+                }
+                catch (Exception ex)
+                {
+                    return;
+                }
             }
             else
             {
@@ -153,6 +165,7 @@ namespace Book_Shop
             GridView1.Visible = false;
             UpdatePanel1.Visible = true;
             UpdatePanel2.Visible = false;
+            Button1.Visible = true;
         }
 
         protected void MngBook_Btn_Click(object sender, EventArgs e)
@@ -160,6 +173,7 @@ namespace Book_Shop
             GridView1.Visible = true;
             UpdatePanel1.Visible = false;
             UpdatePanel2.Visible = false;
+            Button1.Visible = false;
         }
 
         protected void MngPromo_Btn_Click(object sender, EventArgs e)
@@ -167,6 +181,7 @@ namespace Book_Shop
             GridView1.Visible = false;
             UpdatePanel2.Visible = true;
             UpdatePanel1.Visible = false;
+            Button1.Visible = false;
         }
     }
 }
