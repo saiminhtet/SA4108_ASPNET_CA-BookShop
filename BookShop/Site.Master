@@ -90,10 +90,10 @@
                 <td><asp:ImageButton runat="server" ID="imgPowerSearch" ImageUrl="~/resources/symbol/magnifying_glass_blue.png" OnClick="imgPowerSearch_Click" CausesValidation="False"/></td>
                 <td><asp:ImageButton runat="server" ID="imgCart" ImageUrl="~/resources/symbol/shopping-cart-blue.png" OnClick="imgCart_Click" CausesValidation="False"/></td>
                 <td class="td3">
-                    <asp:Button ID="btnSignUp" class="btn-right" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CausesValidation="False" />
-                    <asp:Button ID="btnLogIn" class="btn-right" runat="server" Text="Log In" OnClick="btnLogIn_Click" CausesValidation="False" />
-                    <asp:Button ID="btnUser" class="btn-right" runat="server" Text="Account" OnClick="btnUser_Click" CausesValidation="False"/>
-                    <asp:Button ID="btnLogOut" class="btn-right" runat="server" Text="Log Out"  CausesValidation="False" OnClick="btnLogOut_Click" />
+                    <asp:Button ID="btnSignUp" class="btn-right" runat="server" CssClass="btn btn-primary" Text="Sign Up" OnClick="btnSignUp_Click" CausesValidation="False" />
+                    <asp:Button ID="btnLogIn" class="btn-right" runat="server" CssClass="btn btn-primary" Text="Log In" OnClick="btnLogIn_Click" CausesValidation="False" />
+                    <asp:Button ID="btnUser" class="btn-right" runat="server" CssClass="btn btn-primary" Text="Account" OnClick="btnUser_Click" CausesValidation="False"/>
+                    <asp:Button ID="btnLogOut" class="btn-right" runat="server" CssClass="btn btn-primary" Text="Log Out"  CausesValidation="False" OnClick="btnLogOut_Click" />
                 </td>
             </tr>
         </table>
@@ -141,8 +141,10 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
+            <footer class="footer">
+                <div class="container">
                 <p>&copy; <%: DateTime.Now.Year %> - NUS ISS GDipSA46 Team 6 SA4108 Programming Web Applications using ASP.NET </p>
+            </div>
             </footer>
         </div>
 

@@ -102,6 +102,10 @@
                         </LayoutTemplate>
                     </asp:ListView>
                 </ContentTemplate>
+                 <Triggers>
+                           
+                            <asp:AsyncPostBackTrigger ControlID="lvbooklist" />
+                        </Triggers>
             </asp:UpdatePanel>
         </div>
     </section>
