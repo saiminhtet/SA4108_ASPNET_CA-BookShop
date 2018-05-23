@@ -19,18 +19,18 @@ namespace Book_Shop
                 myCart = (Cart)Session["cart"];
                 Session["searchstring"] = Request.QueryString["search"];
 
-                if ((string)Session["addok"] == "true")
-                {
-                    NotifyUser("Added item to cart successfully", "Success");
-                }
-                if ((string)Session["addng"] == "true")
-                {
-                    NotifyUser("Unable to add item to cart", "Error");
-                }
+                //if ((string)Session["addok"] == "true")
+                //{
+                //    NotifyUser("Added item to cart successfully", "Success");
+                //}
+                //if ((string)Session["addng"] == "true")
+                //{
+                //    NotifyUser("Unable to add item to cart", "Error");
+                //}
 
 
             }
-
+           
         }
 
         public IQueryable<BookList> GetBooksList([QueryString("search")] string searchquery)
@@ -51,6 +51,12 @@ namespace Book_Shop
             Page.ClientScript.RegisterStartupScript(this.GetType(), "toastr_message", "toastr.success('" + msg + "', '" + type + "')", true);
         }
 
+        protected void NotifyAddedToCard(string msg, string type)
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "toastr_message", "toastr.success('" + msg + "', '" + type + "')", true);
+        }
+
+
         protected void lvbooklist_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             if (e.CommandName == "AddToCart")
@@ -67,18 +73,22 @@ namespace Book_Shop
                     string temp = myCart.AddToCart(c);
                     Session["cart"] = myCart;
 
+                    //if (temp == Cart.AddToCartOK)
+                    //{
+                    //    Session["addok"] = "true";
+                    //    Response.Redirect("~/SearchResult?search=" + (string)Session["searchstring"]);
+                    //}
+            
+                    //else if (temp == Cart.AddToCartNG)
+                    //{
+                    //    Session["addng"] = "true";
+                    //    Response.Redirect("~/SearchResult?search=" + (string)Session["searchstring"]);
+                    //}
+
                     if (temp == Cart.AddToCartOK)
-                    {
-                        Session["addok"] = "true";
-                        Response.Redirect("~/SearchResult?search=" + (string)Session["searchstring"]);
-                    }
-                    //NotifyUser("Added item to cart successfully", "Success");
+                        NotifyAddedToCard("Added item to cart successfully", "Success");
                     else if (temp == Cart.AddToCartNG)
-                    {
-                        Session["addng"] = "true";
-                        Response.Redirect("~/SearchResult?search=" + (string)Session["searchstring"]);
-                    }
-                    //NotifyUser("Unable to add item to cart", "Error");
+                        NotifyAddedToCard("Unable to add item to cart", "Error");
 
 
                 }
